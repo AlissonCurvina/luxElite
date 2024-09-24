@@ -1,1 +1,8 @@
-<p>products works!</p>
+<app-product-info-card
+    *ngFor="let product of productsList"
+    [name]="product.name"
+    [category]="product.category"
+    [description]="product.description"
+    [price]="product.price"
+    [brand]="product.brand">
+</app-product-info-card>

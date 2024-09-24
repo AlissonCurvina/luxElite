@@ -1,7 +1,5 @@
-import { DecimalPipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NgForOf, NgFor } from '@angular/common';
+import { CommonModule, NgForOf, NgFor } from '@angular/common';
 
 @Component({
 	selector: 'app-pricing-info-card',
