@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { PricingInfoCardComponent } from '../../components/pricing-info-card/pricing-info-card.component';
-import { CommonModule } from '@angular/common';
-import { NgForOf, NgFor } from '@angular/common';
+import { CommonModule, NgForOf, NgFor } from '@angular/common';
 
 @Component({
     selector: 'app-pricing',
