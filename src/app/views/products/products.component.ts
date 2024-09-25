@@ -10,6 +10,7 @@ import { ProductInfoCardComponent } from '../../components/product-info-card/pro
 	templateUrl: './products.component.html',
 	styleUrls: ['./products.component.css']
 })
+
 export class ProductsComponent {
 	public bolsasDeLuxo: any[] = [
 		{
