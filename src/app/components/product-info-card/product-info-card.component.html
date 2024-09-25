@@ -1,16 +1,39 @@
-<div class="bg-white shadow-md rounded-lg p-4 transition-transform transform hover:scale-105">
-    <h1 class="text-lg font-bold text-gray-800 truncate">{{ name }}</h1>
-    <p class="mt-1 text-sm text-gray-600 truncate">{{ description }}</p>
-    <p class="mt-1 text-xs text-gray-500 italic">{{ category }}</p>
-    <p class="mt-1 text-lg font-semibold text-gray-900">R$ {{ price | number: '1.2-2' }}</p>
-    <p class="mt-1 text-xs text-gray-700">Marca: {{ brand }}</p>
-
-    <ul role="list" class="mt-4 space-y-2">
-        <li *ngFor="let package of includedInPackages" class="flex items-center text-xs">
-            <svg class="w-4 h-4 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10 18l-7-7h4V2h6v9h4l-7 7z" />
+<div class="flex justify-center flex-wrap gap-10 p-8 bg-black">
+    <div class="bg-black border-2 border-[#A9A48E] shadow-lg rounded-3xl p-5 w-72 transition-transform transform hover:scale-105">
+      <!-- Imagem da bolsa -->
+      <img [src]="photos" alt="{{ name }}" class="w-full h-40 object-cover rounded-lg" />
+  
+      <!-- Detalhes do produto -->
+      <div class="mt-3">
+        <h1 class="text-lg font-bold text-[#D7A137] truncate">{{ name }}</h1>
+  
+        <p class="mt-1 text-sm text-[#FFFFFF] truncate">{{ description }}</p>
+  
+        <p class="mt-1 text-xs text-gray-400 italic">{{ category }}</p>
+  
+        <p class="mt-1 text-xs text-gray-400">Marca: {{ brand }}</p>
+  
+        <!-- Pacotes incluídos -->
+        <ul role="list" class="mt-3 space-y-1">
+          <li *ngFor="let package of includedInPackages" class="flex items-center text-xs">
+            <svg class="w-3 h-3 text-yellow-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 18l-7-7h4V2h6v9h4l-7 7z" />
             </svg>
-            <p class="text-gray-700">{{ package }}</p>
-        </li>
-    </ul>
-</div>
+            <p class="text-gray-400">{{ package }}</p>
+          </li>
+        </ul>
+  
+        <!-- Preço e Botão de detalhes organizados lado a lado -->
+        <div class="flex items-center justify-between mt-4">
+          <!-- Preço com cor D7A137 -->
+          <p class="text-lg font-semibold text-[#D7A137]">R$ {{ price | number: '1.2-2' }}</p>
+  
+          <!-- Botão de detalhes -->
+          <button class="bg-[#D7A137] text-dark text-xs font-semibold py-2 px-6 rounded-2xl hover:bg-yellow-600">
+            Detalhes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

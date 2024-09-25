@@ -1,11 +1,105 @@
-<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+<div class="p-8 bg-black">
+    <!-- Título para Bolsas de Luxo -->
+    <h1 class="text-2xl border-b border-yellow-200 font-bold text-[#D7A137] mb-6">BOLSAS DE LUXO</h1>
+    
+    <div class="flex justify-center flex-wrap gap-10">
+      <app-product-info-card 
+          *ngFor="let product of bolsasDeLuxo"
+          [id]="product.id"
+          [name]="product.name"
+          [description]="product.description"
+          [category]="product.category"
+          [photos]="product.photos"
+          [price]="product.price"
+          [brand]="product.brand"
+          [includedInPackages]="product.includedInPackages">
+      </app-product-info-card>
+    </div>
+  
+    <!-- Título para Roupas de Luxo -->
+    <h1 class="text-2xl border-b border-yellow-200 font-bold text-[#D7A137] mt-10 mb-6">ROUPAS DE LUXO</h1>
+  
+    <div class="flex justify-center flex-wrap gap-10">
+      <app-product-info-card 
+          *ngFor="let product of roupasDeLuxo"
+          [id]="product.id"
+          [name]="product.name"
+          [description]="product.description"
+          [category]="product.category"
+          [photos]="product.photos"
+          [price]="product.price"
+          [brand]="product.brand"
+          [includedInPackages]="product.includedInPackages">
+      </app-product-info-card>
+    </div>
+  
+    <!-- Título para Pets de Luxo -->
+    <h1 class="text-2xl border-b border-yellow-200 font-bold text-[#D7A137] mt-10 mb-6">PETS DE LUXO</h1>
+  
+    <div class="flex justify-center flex-wrap gap-10">
+      <app-product-info-card 
+          *ngFor="let product of petsDeLuxo"
+          [id]="product.id"
+          [name]="product.name"
+          [description]="product.description"
+          [category]="product.category"
+          [photos]="product.photos"
+          [price]="product.price"
+          [brand]="product.brand"
+          [includedInPackages]="product.includedInPackages">
+      </app-product-info-card>
+    </div>
+  
+    <!-- Título para Carros de Luxo -->
+    <h1 class="text-2xl border-b border-yellow-200 font-bold text-[#D7A137] mt-10 mb-6">CARROS DE LUXO</h1>
+  
+    <div class="flex justify-center flex-wrap gap-10">
+      <app-product-info-card 
+          *ngFor="let product of carrosDeLuxo"
+          [id]="product.id"
+          [name]="product.name"
+          [description]="product.description"
+          [category]="product.category"
+          [photos]="product.photos"
+          [price]="product.price"
+          [brand]="product.brand"
+          [includedInPackages]="product.includedInPackages">
+      </app-product-info-card>
+    </div>
+  
+    <!-- Título para Joias de Luxo -->
+    <h1 class="text-2xl border-b border-yellow-200 font-bold text-[#D7A137] mt-10 mb-6">JOIAS DE LUXO</h1>
+  
+    <div class="flex justify-center flex-wrap gap-10">
+      <app-product-info-card 
+          *ngFor="let product of joiasDeLuxo"
+          [id]="product.id"
+          [name]="product.name"
+          [description]="product.description"
+          [category]="product.category"
+          [photos]="product.photos"
+          [price]="product.price"
+          [brand]="product.brand"
+          [includedInPackages]="product.includedInPackages">
+      </app-product-info-card>
+    </div>
+
+    <!-- Título para Backstory -->
+  <h1 class="text-2xl border-b border-yellow-200 font-bold text-[#D7A137] mt-10 mb-6">BACKSTORY</h1>
+
+  <div class="flex justify-center flex-wrap gap-10">
     <app-product-info-card 
-        *ngFor="let product of productsList"
+        *ngFor="let product of backstory"
+        [id]="product.id"
         [name]="product.name"
-        [category]="product.category"
         [description]="product.description"
+        [category]="product.category"
+        [photos]="product.photos"
         [price]="product.price"
         [brand]="product.brand"
         [includedInPackages]="product.includedInPackages">
     </app-product-info-card>
-</div>
+  </div>
+  </div>
+  

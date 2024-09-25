@@ -2,216 +2,361 @@ import { Component } from '@angular/core';
 import { CommonModule, NgForOf, NgFor } from '@angular/common';
 import { ProductInfoCardComponent } from '../../components/product-info-card/product-info-card.component';
 
+
 @Component({
 	selector: 'app-products',
 	standalone: true,
 	imports: [ProductInfoCardComponent, CommonModule, NgForOf, NgFor],
 	templateUrl: './products.component.html',
-	styleUrl: './products.component.css'
+	styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
-	public productsList: any[] = [
+	public bolsasDeLuxo: any[] = [
+		{
+		  id: 1,
+		  name: 'Chanel Black',
+		  category: 'Bolsas',
+		  description: 'Bolsa Chanel preta básica.',
+		  photos: ['assets/chanel_black.jpg'],
+		  price: 400,
+		  includedInPackages: ['Básico'],
+		  brand: 'Chanel'
+		},
+		{
+		  id: 2,
+		  name: 'Chanel Red',
+		  category: 'Bolsas',
+		  description: 'Bolsa Chanel vermelha de diamante.',
+		  photos: ['assets/chanel_red.jpg'],
+		  price: 200,
+		  includedInPackages: ['Diamante'],
+		  brand: 'Chanel'
+		},
+		{
+		  id: 3,
+		  name: 'Chanel Blue',
+		  category: 'Bolsas',
+		  description: 'Bolsa Chanel azul premium.',
+		  photos: ['assets/chanel_blue.jpg'],
+		  price: 500,
+		  includedInPackages: ['Premium'],
+		  brand: 'Chanel'
+		},
+		{
+		  id: 4,
+		  name: 'LV White',
+		  category: 'Bolsas',
+		  description: 'Bolsa Louis Vuitton branca LuxElite.',
+		  photos: ['assets/lv_white.jpg'],
+		  price: 100,
+		  includedInPackages: ['LuxElite'],
+		  brand: 'Louis Vuitton'
+		},
+		{
+		  id: 5,
+		  name: 'LV Black',
+		  category: 'Bolsas',
+		  description: 'Bolsa Louis Vuitton preta básica.',
+		  photos: ['assets/lv_black.jpg'],
+		  price: 400,
+		  includedInPackages: ['Básico'],
+		  brand: 'Louis Vuitton'
+		},
+		{
+		  id: 6,
+		  name: 'LV Brown',
+		  category: 'Bolsas',
+		  description: 'Bolsa Louis Vuitton marrom Elegance.',
+		  photos: ['assets/lv_brown.jpg'],
+		  price: 200,
+		  includedInPackages: ['Elegance'],
+		  brand: 'Louis Vuitton'
+		},
+	];
+
+	public roupasDeLuxo: any[] = [
 		{
 			id: 1,
-			name: 'Gato Siamês',
-			category: 'animais',
-			description: 'Um gato de raça siamês com pedigree, famoso pela sua aparência elegante e personalidade carinhosa.',
-			photos: ['gato1.jpg', 'gato2.jpg'],
-			price: 1200,
-			includedInPackages: ['premium', 'luxelite'],
-			brand: 'Royal Breeds'
-		},
-		{
-			id: 2,
-			name: 'Anel de Diamante',
-			category: 'joias',
-			description: 'Anel com diamante lapidado, uma peça exclusiva para ocasiões especiais.',
-			photos: ['anel1.jpg', 'anel2.jpg'],
-			price: 7500,
-			includedInPackages: ['diamante', 'luxelite', 'elegance'],
-			brand: 'Tiffany & Co.'
-		},
-		{
-			id: 3,
-			name: 'Ferrari F8 Tributo',
-			category: 'carros',
-			description: 'Superesportivo italiano com motor V8, perfeito para entusiastas de alta performance.',
-			photos: ['ferrari1.jpg', 'ferrari2.jpg'],
-			price: 300000,
-			includedInPackages: ['premium', 'diamante', 'luxelite'],
-			brand: 'Ferrari'
-		},
-		{
-			id: 4,
-			name: 'Jaqueta de Couro',
-			category: 'roupas',
-			description: 'Jaqueta de couro legítimo, ideal para dias frios com estilo.',
-			photos: ['jaqueta1.jpg', 'jaqueta2.jpg'],
-			price: 300000,
-			includedInPackages: ['básico', 'premium'],
-			brand: 'Levi\'s'
-		},
-		{
-			id: 5,
-			name: 'Bolsa Chanel',
-			category: 'bolsas',
-			description: 'Bolsa de luxo Chanel, confeccionada em couro de alta qualidade com design atemporal.',
-			photos: ['bolsa1.jpg', 'bolsa2.jpg'],
-			price: 10000,
-			includedInPackages: ['luxelite', 'elegance', 'premium'],
-			brand: 'Chanel'
-		},
-		
-		// Mais 15 produtos
-		{
-			id: 6,
-			name: 'Labrador Retriever',
-			category: 'animais',
-			description: 'Cachorro da raça Labrador, conhecido por sua lealdade e inteligência.',
-			photos: ['labrador1.jpg', 'labrador2.jpg'],
-			price: 1500,
-			includedInPackages: ['básico', 'premium'],
-			brand: 'Paws Breeders'
-		},
-		{
-			id: 7,
-			name: 'Colar de Pérolas',
-			category: 'joias',
-			description: 'Colar de pérolas cultivadas, ideal para eventos formais.',
-			photos: ['colar1.jpg', 'colar2.jpg'],
-			price: 2500,
-			includedInPackages: ['luxelite', 'elegance'],
-			brand: 'Mikimoto'
-		},
-		{
-			id: 8,
-			name: 'Tesla Model S',
-			category: 'carros',
-			description: 'Carro elétrico de alta performance com tecnologia de ponta.',
-			photos: ['tesla1.jpg', 'tesla2.jpg'],
-			price: 120000,
-			includedInPackages: ['diamante', 'premium'],
-			brand: 'Tesla'
-		},
-		{
-			id: 9,
-			name: 'Camisa Social',
-			category: 'roupas',
-			description: 'Camisa social de algodão, ideal para o trabalho e ocasiões formais.',
-			photos: ['camisa1.jpg', 'camisa2.jpg'],
-			price: 100,
-			includedInPackages: ['básico', 'premium'],
-			brand: 'Zara'
-		},
-		{
-			id: 10,
-			name: 'Bolsa de Couro Italiana',
-			category: 'bolsas',
-			description: 'Bolsa artesanal de couro italiano, com detalhes exclusivos.',
-			photos: ['bolsa_italiana1.jpg', 'bolsa_italiana2.jpg'],
-			price: 800,
-			includedInPackages: ['básico', 'luxelite'],
+			name: 'Gucci T-Shirt',
+			category: 'Roupas',
+			description: 'Camiseta Gucci clássica.',
+			photos: ['assets/gucci_tshirt.jpg'],
+			price: 150,
+			includedInPackages: ['Standard'],
 			brand: 'Gucci'
 		},
 		{
-			id: 11,
-			name: 'Pastor Alemão',
-			category: 'animais',
-			description: 'Cão da raça Pastor Alemão, reconhecido por sua inteligência e versatilidade.',
-			photos: ['pastor1.jpg', 'pastor2.jpg'],
-			price: 1500,
-			includedInPackages: ['premium', 'luxelite'],
-			brand: 'Guardians Breeders'
+			id: 2,
+			name: 'Gucci Jacket',
+			category: 'Roupas',
+			description: 'Jaqueta de couro Gucci.',
+			photos: ['assets/gucci_jacket.jpg'],
+			price: 500,
+			includedInPackages: ['Premium'],
+			brand: 'Gucci'
 		},
 		{
-			id: 12,
-			name: 'Brinco de Ouro',
-			category: 'joias',
-			description: 'Brinco de ouro 18k com design minimalista e elegante.',
-			photos: ['brinco1.jpg', 'brinco2.jpg'],
-			price: 1000,
-			includedInPackages: ['básico', 'premium'],
-			brand: 'Cartier'
+			id: 3,
+			name: 'Gucci Dress',
+			category: 'Roupas',
+			description: 'Vestido elegante Gucci.',
+			photos: ['assets/gucci_dress.jpg'],
+			price: 300,
+			includedInPackages: ['Luxury'],
+			brand: 'Gucci'
 		},
 		{
-			id: 13,
-			name: 'Porsche 911 Carrera',
-			category: 'carros',
-			description: 'Carro esportivo clássico com motor de alto desempenho.',
-			photos: ['porsche1.jpg', 'porsche2.jpg'],
-			price: 150000,
-			includedInPackages: ['premium', 'diamante'],
+			id: 4,
+			name: 'Prada Shirt',
+			category: 'Roupas',
+			description: 'Camisa formal Prada.',
+			photos: ['assets/prada_shirt.jpg'],
+			price: 200,
+			includedInPackages: ['Standard'],
+			brand: 'Prada'
+		},
+		{
+			id: 5,
+			name: 'Prada Skirt',
+			category: 'Roupas',
+			description: 'Saia de designer Prada.',
+			photos: ['assets/prada_skirt.jpg'],
+			price: 250,
+			includedInPackages: ['Luxury'],
+			brand: 'Prada'
+		},
+		{
+			id: 6,
+			name: 'Prada Coat',
+			category: 'Roupas',
+			description: 'Casaco sofisticado Prada.',
+			photos: ['assets/prada_coat.jpg'],
+			price: 450,
+			includedInPackages: ['Premium'],
+			brand: 'Prada'
+		},
+	];
+
+	public petsDeLuxo: any[] = [
+		{
+			id: 1,
+			name: 'Golden Retriever',
+			category: 'Pets',
+			description: 'Golden Retriever com pedigree.',
+			photos: ['assets/golden_retriever.jpg'],
+			price: 50,
+			includedInPackages: ['Básico'],
+			brand: 'Luxo Pets'
+		},
+		{
+			id: 2,
+			name: 'Bulldog Francês',
+			category: 'Pets',
+			description: 'Bulldog Francês com estilo.',
+			photos: ['assets/bulldog_frances.jpg'],
+			price: 70,
+			includedInPackages: ['Premium'],
+			brand: 'Luxo Pets'
+		},
+		{
+			id: 3,
+			name: 'Poodle',
+			category: 'Pets',
+			description: 'Poodle de show.',
+			photos: ['assets/poodle.jpg'],
+			price: 60,
+			includedInPackages: ['Elegance'],
+			brand: 'Luxo Pets'
+		},
+		{
+			id: 4,
+			name: 'Persa',
+			category: 'Pets',
+			description: 'Gato Persa com pedigree.',
+			photos: ['assets/gato_persa.jpg'],
+			price: 40,
+			includedInPackages: ['Básico'],
+			brand: 'Luxo Pets'
+		},
+		{
+			id: 5,
+			name: 'Maine Coon',
+			category: 'Pets',
+			description: 'Maine Coon gigante e elegante.',
+			photos: ['assets/maine_coon.jpg'],
+			price: 50,
+			includedInPackages: ['Premium'],
+			brand: 'Luxo Pets'
+		},
+		{
+			id: 6,
+			name: 'Siamês',
+			category: 'Pets',
+			description: 'Gato Siamês sofisticado.',
+			photos: ['assets/gato_siamese.jpg'],
+			price: 45,
+			includedInPackages: ['Elegance'],
+			brand: 'Luxo Pets'
+		},
+	];
+
+	public carrosDeLuxo: any[] = [
+		{
+			id: 1,
+			name: 'Porsche 911',
+			category: 'Carros',
+			description: 'Porsche 911 Turbo.',
+			photos: ['assets/porsche_911.jpg'],
+			price: 300,
+			includedInPackages: ['Diamante'],
 			brand: 'Porsche'
 		},
 		{
-			id: 14,
-			name: 'Calça Jeans Slim',
-			category: 'roupas',
-			description: 'Calça jeans de modelagem slim, confortável e estilosa.',
-			photos: ['calca1.jpg', 'calca2.jpg'],
-			price: 150,
-			includedInPackages: ['básico', 'premium'],
-			brand: 'Diesel'
-		},
-		{
-			id: 15,
-			name: 'Mochila de Viagem',
-			category: 'bolsas',
-			description: 'Mochila espaçosa e resistente, ideal para longas viagens.',
-			photos: ['mochila1.jpg', 'mochila2.jpg'],
+			id: 2,
+			name: 'Ferrari F8',
+			category: 'Carros',
+			description: 'Ferrari F8 Tributo.',
+			photos: ['assets/ferrari_f8.jpg'],
 			price: 350,
-			includedInPackages: ['básico', 'premium'],
-			brand: 'Samsonite'
+			includedInPackages: ['Elegance'],
+			brand: 'Ferrari'
 		},
 		{
-			id: 16,
-			name: 'Poodle Toy',
-			category: 'animais',
-			description: 'Cãozinho da raça Poodle Toy, conhecido por sua fofura e energia.',
-			photos: ['poodle1.jpg', 'poodle2.jpg'],
-			price: 1200,
-			includedInPackages: ['básico', 'luxelite'],
-			brand: 'Tiny Paws'
-		},
-		{
-			id: 17,
-			name: 'Pulseira de Ouro',
-			category: 'joias',
-			description: 'Pulseira delicada de ouro 18k, com acabamento detalhado.',
-			photos: ['pulseira1.jpg', 'pulseira2.jpg'],
-			price: 1500,
-			includedInPackages: ['básico', 'premium'],
-			brand: 'Pandora'
-		},
-		{
-			id: 18,
-			name: 'Lamborghini Aventador',
-			category: 'carros',
-			description: 'Carro superesportivo com motor V12 e design aerodinâmico.',
-			photos: ['lamborghini1.jpg', 'lamborghini2.jpg'],
-			price: 500000,
-			includedInPackages: ['diamante', 'luxelite'],
-			brand: 'Lamborghini'
-		},
-		{
-			id: 19,
-			name: 'Vestido de Festa',
-			category: 'roupas',
-			description: 'Vestido longo de festa, ideal para eventos formais e casamentos.',
-			photos: ['vestido1.jpg', 'vestido2.jpg'],
-			price: 600,
-			includedInPackages: ['luxelite', 'elegance'],
-			brand: 'Elie Saab'
-		},
-		{
-			id: 20,
-			name: 'Bolsa Tote',
-			category: 'bolsas',
-			description: 'Bolsa tote espaçosa e versátil, perfeita para o dia a dia.',
-			photos: ['tote1.jpg', 'tote2.jpg'],
+			id: 3,
+			name: 'Mercedes-Benz S-Class',
+			category: 'Carros',
+			description: 'Mercedes-Benz S-Class Luxury.',
+			photos: ['assets/mercedes_s_class.jpg'],
 			price: 250,
-			includedInPackages: ['básico', 'premium'],
-			brand: 'Longchamp'
+			includedInPackages: ['Premium'],
+			brand: 'Mercedes-Benz'
+		},
+		{
+			id: 4,
+			name: 'Porsche Cayenne',
+			category: 'Carros',
+			description: 'Porsche Cayenne SUV.',
+			photos: ['assets/porsche_cayenne.jpg'],
+			price: 500,
+			includedInPackages: ['Diamante'],
+			brand: 'Porsche'
+		},
+		{
+			id: 5,
+			name: 'Ferrari 488',
+			category: 'Carros',
+			description: 'Ferrari 488 Spider.',
+			photos: ['assets/ferrari_488.jpg'],
+			price: 489,
+			includedInPackages: ['Elegance'],
+			brand: 'Ferrari'
+		},
+		{
+			id: 6,
+			name: 'Mercedes-Benz G-Class',
+			category: 'Carros',
+			description: 'Mercedes-Benz G-Class Off-Road.',
+			photos: ['assets/mercedes_g_class.jpg'],
+			price: 600,
+			includedInPackages: ['Premium'],
+			brand: 'Mercedes-Benz'
+		},
+	];
+
+	public joiasDeLuxo: any[] = [
+		{
+			id: 1,
+			name: 'Anel Cartier Love',
+			category: 'Joias',
+			description: 'Anel Cartier Love em ouro amarelo.',
+			photos: ['assets/anel_cartier_love.jpg'],
+			price: 100,
+			includedInPackages: ['Básico'],
+			brand: 'Cartier'
+		},
+		{
+			id: 2,
+			name: 'Colar Bulgari Serpenti',
+			category: 'Joias',
+			description: 'Colar Bulgari Serpenti em ouro rosa.',
+			photos: ['assets/colar_bulgari_serpenti.jpg'],
+			price: 150,
+			includedInPackages: ['Premium'],
+			brand: 'Bulgari'
+		},
+		{
+			id: 3,
+			name: 'Pulseira Chapard',
+			category: 'Joias',
+			description: 'Pulseira Chapard de diamantes.',
+			photos: ['assets/pulseira_chapard.jpg'],
+			price: 120,
+			includedInPackages: ['Básico'],
+			brand: 'Chapard'
+		},
+		{
+			id: 4,
+			name: 'Brinco Cartier Panthère',
+			category: 'Joias',
+			description: 'Brinco Cartier Panthère em ouro branco.',
+			photos: ['assets/brinco_cartier_panthere.jpg'],
+			price: 200,
+			includedInPackages: ['Premium'],
+			brand: 'Cartier'
+		},
+		{
+			id: 5,
+			name: 'Anel Bulgari B.zero1',
+			category: 'Joias',
+			description: 'Anel Bulgari B.zero1 em cerâmica.',
+			photos: ['assets/anel_bulgari_bzero1.jpg'],
+			price: 800,
+			includedInPackages: ['Básico'],
+			brand: 'Bulgari'
+		},
+		{
+			id: 6,
+			name: 'Colar Chapard Vintage',
+			category: 'Joias',
+			description: 'Colar Chapard Vintage com safiras.',
+			photos: ['assets/colar_chapard_vintage.jpg'],
+			price: 170,
+			includedInPackages: ['Premium'],
+			brand: 'Chapard'
+		},
+	];
+
+	public backstory: any[] = [
+		{
+			id: 1,
+			name: 'Herdeiro',
+			category: 'Backstory',
+			description: 'A história de um jovem herdeiro de uma grande fortuna.',
+			photos: ['assets/herdeiro.jpg'],
+			price: 800,
+			includedInPackages: ['Elegance'],
+			brand: 'Luxo'
+		},
+		{
+			id: 2,
+			name: 'Empreendedor',
+			category: 'Backstory',
+			description: 'A trajetória inspiradora de um empreendedor de sucesso.',
+			photos: ['assets/empreendedor.jpg'],
+			price: 600,
+			includedInPackages: ['Lux Elite'],
+			brand: 'Luxo'
+		},
+		{
+			id: 3,
+			name: 'Investidor',
+			category: 'Backstory',
+			description: 'A vida de um investidor astuto em busca das melhores oportunidades.',
+			photos: ['assets/investidor.jpg'],
+			price: 700,
+			includedInPackages: ['Diamante'],
+			brand: 'Luxo'
 		}
-	]
+	];
+
 }
