@@ -1,8 +1,11 @@
-<app-product-info-card
-    *ngFor="let product of productsList"
-    [name]="product.name"
-    [category]="product.category"
-    [description]="product.description"
-    [price]="product.price"
-    [brand]="product.brand">
-</app-product-info-card>
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <app-product-info-card 
+        *ngFor="let product of productsList"
+        [name]="product.name"
+        [category]="product.category"
+        [description]="product.description"
+        [price]="product.price"
+        [brand]="product.brand"
+        [includedInPackages]="product.includedInPackages">
+    </app-product-info-card>
+</div>

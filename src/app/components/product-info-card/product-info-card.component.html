@@ -1,12 +1,16 @@
-<h1>{{ name }}</h1>
-<h1>{{ description }}</h1>
-<h1>{{ category }}</h1>
-<h1>{{ price }}</h1>
-<h1>{{ brand }}</h1>
-<ul role="list" class="mt-8 space-y-5 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-5">
-    <li 
-        class="flex items-start lg:col-span-1" 
-        *ngFor="let package of includedInPackages">
-        <p class="ml-3 text-white">{{ package }}
-    </li>
-</ul>
+<div class="bg-white shadow-md rounded-lg p-4 transition-transform transform hover:scale-105">
+    <h1 class="text-lg font-bold text-gray-800 truncate">{{ name }}</h1>
+    <p class="mt-1 text-sm text-gray-600 truncate">{{ description }}</p>
+    <p class="mt-1 text-xs text-gray-500 italic">{{ category }}</p>
+    <p class="mt-1 text-lg font-semibold text-gray-900">R$ {{ price | number: '1.2-2' }}</p>
+    <p class="mt-1 text-xs text-gray-700">Marca: {{ brand }}</p>
+
+    <ul role="list" class="mt-4 space-y-2">
+        <li *ngFor="let package of includedInPackages" class="flex items-center text-xs">
+            <svg class="w-4 h-4 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 18l-7-7h4V2h6v9h4l-7 7z" />
+            </svg>
+            <p class="text-gray-700">{{ package }}</p>
+        </li>
+    </ul>
+</div>
