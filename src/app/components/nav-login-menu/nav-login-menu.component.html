@@ -1,22 +1,22 @@
-<nav x-data="{ isOpen: false }" class="relative mb-4 bg-zinc-950 shadow dark:bg-gray-800">
+<nav x-data="{ isOpen: false }" class="relative mb-4 bg-black shadow dark:bg-black">
 	<div class="container pt-4 mx-auto md:flex md:justify-end md:items-center">
 		<!-- Mobile Menu open: "block", Menu closed: "hidden" -->
 		<div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']"
-			class="absolute inset-x-0 z-20 w-full p-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center">
+			class="absolute inset-x-0 z-20 w-full p-4 transition-all duration-300 ease-in-out bg-white dark:bg-black md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center">
 			<div class="flex flex-col md:flex-row md:mx-6">
                 <div class="rounded-md shadow mr-4">
                     <a 
                         routerLink="/create-new-user" 
                         routerLinkActive="active" 
                         ariaCurrentWhenActive="page"
-                        class="flex items-center justify-center px-5 border border-transparent text-base font-thin rounded-full text-yellow-400 transition-colors border-yellow-400 bg-zinc-950 hover:bg-yellow-400 hover:text-white">Criar usuário</a>
+                        class="flex items-center justify-center px-5 border border-transparent text-base font-thin rounded-full text-[#AD760C] transition-colors border-[#AD760C] bg-black hover:bg-[#AD760C] hover:text-white">Criar usuário</a>
                 </div>
                 <div class="rounded-md shadow">
                     <a 
                         routerLink="/login" 
                         routerLinkActive="active" 
                         ariaCurrentWhenActive="page"
-                        class="flex items-center justify-center px-5 border transition-colors border-transparent text-base font-thin rounded-full text-dark bg-yellow-400 hover:bg-yellow-500">Entrar</a>
+                        class="flex items-center justify-center px-5 border transition-colors border-transparent text-base font-thin rounded-full text-dark bg-[#AD760C] hover:bg-yellow-500">Entrar</a>
                 </div>
 			</div>
 		</div>
