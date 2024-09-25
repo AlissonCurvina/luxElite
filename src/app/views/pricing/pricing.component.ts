@@ -31,7 +31,7 @@ export class PricingComponent {
                 '1 pet de pequeno ou médio porte',
                 'Criação de uma backstore exclusiva (empresário ou investidor)'
             ], 
-		    packPrice: '1k'
+		    packPrice: '1K'
         },
         {
             title:'Elegance',
@@ -43,7 +43,7 @@ export class PricingComponent {
                 '1 joia de grife (menor custo)',
                 'Criação de uma backstore exclusiva (empresário ou investidor)'
             ], 
-		    packPrice: '3k'
+		    packPrice: '3K'
         },
         {
             title:'Diamante',
@@ -56,7 +56,7 @@ export class PricingComponent {
                 '1 sessão de fotos com um carro de luxo (10 fotos)',
                 'Criação de uma backstore exclusiva como herdeiro'
             ], 
-		    packPrice: '10k'
+		    packPrice: '10K'
         },
         {
             title:'Lux Elite',
@@ -69,7 +69,7 @@ export class PricingComponent {
                 '1 sessão de fotos com um carro de luxo (fotos ilimitadas)',
                 'Criação de uma backstore exclusiva como herdeiro'
             ], 
-		    packPrice: '20k'
+		    packPrice: '20K'
         },
     ]
 }
