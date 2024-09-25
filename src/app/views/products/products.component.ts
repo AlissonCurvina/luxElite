@@ -83,7 +83,7 @@ export class ProductsComponent {
 			description: 'Camiseta Gucci clássica.',
 			photos: ['assets/gucci_tshirt.jpg'],
 			price: 150,
-			includedInPackages: ['Standard'],
+			includedInPackages: ['Básico'],
 			brand: 'Gucci'
 		},
 		{
@@ -103,7 +103,7 @@ export class ProductsComponent {
 			description: 'Vestido elegante Gucci.',
 			photos: ['assets/gucci_dress.jpg'],
 			price: 300,
-			includedInPackages: ['Luxury'],
+			includedInPackages: ['Lux Elite'],
 			brand: 'Gucci'
 		},
 		{
@@ -113,7 +113,7 @@ export class ProductsComponent {
 			description: 'Camisa formal Prada.',
 			photos: ['assets/prada_shirt.jpg'],
 			price: 200,
-			includedInPackages: ['Standard'],
+			includedInPackages: ['Elegance'],
 			brand: 'Prada'
 		},
 		{
@@ -123,7 +123,7 @@ export class ProductsComponent {
 			description: 'Saia de designer Prada.',
 			photos: ['assets/prada_skirt.jpg'],
 			price: 250,
-			includedInPackages: ['Luxury'],
+			includedInPackages: ['Lux Elite'],
 			brand: 'Prada'
 		},
 		{
@@ -147,7 +147,7 @@ export class ProductsComponent {
 			photos: ['assets/golden_retriever.jpg'],
 			price: 50,
 			includedInPackages: ['Básico'],
-			brand: 'Luxo Pets'
+			brand: 'Golden'
 		},
 		{
 			id: 2,
@@ -157,7 +157,7 @@ export class ProductsComponent {
 			photos: ['assets/bulldog_frances.jpg'],
 			price: 70,
 			includedInPackages: ['Premium'],
-			brand: 'Luxo Pets'
+			brand: 'Bulldog'
 		},
 		{
 			id: 3,
@@ -167,7 +167,7 @@ export class ProductsComponent {
 			photos: ['assets/poodle.jpg'],
 			price: 60,
 			includedInPackages: ['Elegance'],
-			brand: 'Luxo Pets'
+			brand: 'Poodle'
 		},
 		{
 			id: 4,
@@ -177,7 +177,7 @@ export class ProductsComponent {
 			photos: ['assets/gato_persa.jpg'],
 			price: 40,
 			includedInPackages: ['Básico'],
-			brand: 'Luxo Pets'
+			brand: 'Persa'
 		},
 		{
 			id: 5,
@@ -187,7 +187,7 @@ export class ProductsComponent {
 			photos: ['assets/maine_coon.jpg'],
 			price: 50,
 			includedInPackages: ['Premium'],
-			brand: 'Luxo Pets'
+			brand: 'Maine Coon'
 		},
 		{
 			id: 6,
@@ -197,7 +197,7 @@ export class ProductsComponent {
 			photos: ['assets/gato_siamese.jpg'],
 			price: 45,
 			includedInPackages: ['Elegance'],
-			brand: 'Luxo Pets'
+			brand: 'Siamês'
 		},
 	];
 
