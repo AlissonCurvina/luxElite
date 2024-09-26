@@ -1,12 +1,21 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-nav-search',
-  standalone: true,
-  imports: [],
   templateUrl: './nav-search.component.html',
-  styleUrl: './nav-search.component.css'
+  standalone: true,
+  imports: [FormsModule],
 })
 export class NavSearchComponent {
+  searchTerm: string = '';
 
+  constructor(private router: Router) {}
+
+  onSearch() {
+    if (this.searchTerm) {
+      this.router.navigate(['/search-results'], { queryParams: { query: this.searchTerm } });
+    }
+  }
 }

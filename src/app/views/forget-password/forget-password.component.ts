@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // Import FormsModule para o [(ngModel)]
+import { FormsModule } from '@angular/forms'; // import FormsModule para o [(ngModel)]
 
 @Component({
   selector: 'app-forget-password',

@@ -1,0 +1,12 @@
+<div class="p-4">
+    <h2 class="text-2xl font-semibold text-yellow-600">Resultados para "{{ searchQuery }}"</h2>
+    <div *ngIf="results.length > 0">
+      <ul>
+        <li *ngFor="let item of results">{{ item.name }}</li>
+      </ul>
+    </div>
+    <div *ngIf="results.length === 0" class="text-red-500">
+      Nenhum resultado encontrado.
+    </div>
+  </div>
+  
