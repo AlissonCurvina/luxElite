@@ -27,6 +27,6 @@ export const routes: Routes = [
     { path: 'login', component:LoginComponent },
     { path: 'product-details', component:ProductDetailsComponent },
     { path: 'checkout', component:CheckoutComponent },
-    { path: '**', component:PageNotFoundComponent },
     { path: 'forget-password', component:ForgetPasswordComponent},
+    { path: '**', component:PageNotFoundComponent },
 ];
