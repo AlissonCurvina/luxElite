@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { PricingInfoCardComponent } from '../../components/pricing-info-card/pricing-info-card.component';
 import { CommonModule, NgForOf, NgFor } from '@angular/common';
 
+
+
 @Component({
     selector: 'app-pricing',
     standalone: true,
-    imports: [PricingInfoCardComponent, NgForOf, NgFor, CommonModule],
+    imports: [PricingInfoCardComponent, NgForOf, NgFor, CommonModule,],
     templateUrl: './pricing.component.html',
     styleUrl: './pricing.component.css'
 })
