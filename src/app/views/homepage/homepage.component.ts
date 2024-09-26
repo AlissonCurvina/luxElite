@@ -14,5 +14,5 @@ export class HomepageComponent {
 }
 
 const routes: Routes = [
-  { path: 'pricing', component: HomepageComponent },
+  { path: 'pricing', component: PricingComponent },
 ];

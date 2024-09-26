@@ -12,6 +12,7 @@ import { LoginComponent } from './views/login/login.component';
 import { ProductDetailsComponent } from './views/product-details/product-details.component';
 import { CheckoutComponent } from './views/checkout/checkout.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
+import { ForgetPasswordComponent } from './views/forget-password/forget-password.component';
 
 export const routes: Routes = [
     { path: 'home', component:HomepageComponent },
@@ -27,4 +28,5 @@ export const routes: Routes = [
     { path: 'product-details', component:ProductDetailsComponent },
     { path: 'checkout', component:CheckoutComponent },
     { path: '**', component:PageNotFoundComponent },
+    { path: 'forget-password', component:ForgetPasswordComponent},
 ];
