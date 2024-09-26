@@ -1,21 +1,23 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; // Importe o FormsModule
+import { CommonModule } from '@angular/common'; // Importe o CommonModule se necessário
+import { SearchService } from '../../search.service'; // Importe o serviço de busca
 
 @Component({
   selector: 'app-nav-search',
+  standalone: true, // Indica que o componente é standalone
+  imports: [CommonModule, FormsModule], // Inclua o FormsModule aqui
   templateUrl: './nav-search.component.html',
-  standalone: true,
-  imports: [FormsModule],
+  styleUrls: ['./nav-search.component.css']
 })
 export class NavSearchComponent {
-  searchTerm: string = '';
+  public searchTerm: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private searchService: SearchService) {}
 
-  onSearch() {
-    if (this.searchTerm) {
-      this.router.navigate(['/search-results'], { queryParams: { query: this.searchTerm } });
-    }
+  // Função chamada ao clicar na lupa (submit do form)
+  search() {
+    // Atualiza o termo de busca no serviço
+    this.searchService.setSearchTerm(this.searchTerm);
   }
 }

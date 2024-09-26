@@ -1,12 +1,27 @@
-<div class="p-4">
-    <h2 class="text-2xl font-semibold text-yellow-600">Resultados para "{{ searchQuery }}"</h2>
-    <div *ngIf="results.length > 0">
-      <ul>
-        <li *ngFor="let item of results">{{ item.name }}</li>
-      </ul>
-    </div>
-    <div *ngIf="results.length === 0" class="text-red-500">
-      Nenhum resultado encontrado.
-    </div>
-  </div>
-  
+<div class="p-8 bg-black">
+    <h1 class="text-3xl text-[#D7A137] mb-6 text-center font-forum">
+      Resultados da Busca para "{{ searchTerm }}"
+    </h1>
+    
+    <!-- Resultados da Busca -->
+    <ng-container *ngIf="filteredProducts.length; else noResults">
+      <div class="flex justify-center flex-wrap gap-10">
+        <app-product-info-card
+          *ngFor="let product of filteredProducts"
+          [id]="product.id"
+          [name]="product.name"
+          [description]="product.description"
+          [category]="product.category"
+          [photos]="product.photos"
+          [price]="product.price"
+          [brand]="product.brand"
+          [includedInPackages]="product.includedInPackages">
+        </app-product-info-card>
+      </div>
+    </ng-container>
+    
+    <!-- Caso nenhum produto seja encontrado -->
+    <ng-template #noResults>
+      <p class="text-white text-center">Nenhum produto encontrado.</p>
+    </ng-template>
+</div>
