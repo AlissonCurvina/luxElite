@@ -132,9 +132,15 @@
             </div>
             <div>
                 <button
+                type="button"
+                (click)="onCreate()"
                     class="px-5 py-1 mt-2 min-w-full border transition-colors border-transparent text-base font-thin rounded-full text-dark bg-yellow-400 hover:bg-yellow-500">
                     Criar conta
                 </button>
+                <!-- mensagem de sucesso -->
+                <div *ngIf="successMessage" class="mt-4 text-green-400 font-semibold">
+                    {{ successMessage }}
+                </div>
             </div>
         </form>
     </div>
