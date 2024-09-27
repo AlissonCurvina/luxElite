@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
 import { ProductInfoCardComponent } from '../../components/product-info-card/product-info-card.component';
 import { FormsModule } from '@angular/forms';
-import { SearchService } from '../../search.service';// Importe o serviço
 
 @Component({
   selector: 'app-search-results',
@@ -13,14 +11,14 @@ import { SearchService } from '../../search.service';// Importe o serviço
   styleUrls: ['./search-results.component.css']
 })
 export class SearchResultsComponent implements OnInit {
-  public searchTerm: string = '';
+  public selectedBrands: Set<string> = new Set(); // Para armazenar marcas selecionadas
+  public selectedCategories: Set<string> = new Set(); // Para armazenar categorias selecionadas
   public filteredProducts: any[] = [];
   public allProducts: any[] = []; // Armazenar todos os produtos
+  public availableBrands: string[] = ['Prada', 'Gucci']; // Marcas disponíveis
+  public availableCategories: string[] = ['Bolsas', 'Roupas']; // Categorias disponíveis
 
-  constructor(
-    private route: ActivatedRoute,
-    private searchService: SearchService // Injete o serviço de busca
-  ) {
+  constructor() {
     // Inicializando produtos de exemplo
     this.allProducts = [
       {
@@ -43,35 +41,57 @@ export class SearchResultsComponent implements OnInit {
         includedInPackages: ['Diamante'],
         brand: 'Chanel'
       },
+      {
+        id: 3,
+        name: 'Prada Dress',
+        category: 'Roupas',
+        description: 'Vestido da Prada elegante.',
+        photos: ['assets/prada_dress.jpg'],
+        price: 600,
+        includedInPackages: ['Premium'],
+        brand: 'Prada'
+      },
+      {
+        id: 4,
+        name: 'Gucci Handbag',
+        category: 'Bolsas',
+        description: 'Bolsa de mão Gucci sofisticada.',
+        photos: ['assets/gucci_handbag.jpg'],
+        price: 450,
+        includedInPackages: ['Luxo'],
+        brand: 'Gucci'
+      }
       // Adicione mais produtos conforme necessário
     ];
+    this.filteredProducts = this.allProducts; // Inicie exibindo todos os produtos
   }
 
   ngOnInit() {
-    // Assine o observable do SearchService para receber o termo de busca
-    this.searchService.searchTerm$.subscribe(term => {
-      this.searchTerm = term;
-      this.filterProducts(); // Filtra os produtos com base no novo termo
-    });
+    this.filterProducts(); // Filtra produtos na inicialização
+  }
 
-    // Também verifica o termo de busca da URL
-    this.route.queryParams.subscribe(params => {
-      if (params['search']) {
-        this.searchService.setSearchTerm(params['search']);
-      }
-    });
+  public toggleBrand(brand: string) {
+    if (this.selectedBrands.has(brand)) {
+      this.selectedBrands.delete(brand); // Remove a marca se já estiver selecionada
+    } else {
+      this.selectedBrands.add(brand); // Adiciona a marca se não estiver selecionada
+    }
+    this.filterProducts(); // Filtra produtos com base nas marcas selecionadas
+  }
+
+  public toggleCategory(category: string) {
+    if (this.selectedCategories.has(category)) {
+      this.selectedCategories.delete(category); // Remove a categoria se já estiver selecionada
+    } else {
+      this.selectedCategories.add(category); // Adiciona a categoria se não estiver selecionada
+    }
+    this.filterProducts(); // Filtra produtos com base nas categorias selecionadas
   }
 
   public filterProducts() {
-    if (this.searchTerm.trim() === '') {
-      // Se o termo de busca estiver vazio, exibe todos os produtos
-      this.filteredProducts = this.allProducts;
-    } else {
-      const lowerSearchTerm = this.searchTerm.toLowerCase();
-      this.filteredProducts = this.allProducts.filter(product =>
-        product.name.toLowerCase().includes(lowerSearchTerm) ||
-        product.description.toLowerCase().includes(lowerSearchTerm)
-      );
-    }
+    this.filteredProducts = this.allProducts.filter(product =>
+      (this.selectedBrands.size === 0 || this.selectedBrands.has(product.brand)) &&
+      (this.selectedCategories.size === 0 || this.selectedCategories.has(product.category))
+    );
   }
 }

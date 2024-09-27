@@ -1,9 +1,36 @@
 <div class="p-8 bg-black">
     <h1 class="text-3xl text-[#D7A137] mb-6 text-center font-forum">
-      Resultados da Busca para "{{ searchTerm }}"
+      Filtrar por Marca
+    </h1>
+
+    <div class="flex justify-center flex-wrap gap-4 mb-6">
+      <label *ngFor="let brand of availableBrands">
+        <input 
+          type="checkbox" 
+          [value]="brand" 
+          (change)="toggleBrand(brand)"
+        /> {{ brand }}
+      </label>
+    </div>
+
+    <h1 class="text-3xl text-[#D7A137] mb-6 text-center font-forum">
+      Filtrar por Categoria
+    </h1>
+
+    <div class="flex justify-center flex-wrap gap-4 mb-6">
+      <label *ngFor="let category of availableCategories">
+        <input 
+          type="checkbox" 
+          [value]="category" 
+          (change)="toggleCategory(category)"
+        /> {{ category }}
+      </label>
+    </div>
+
+    <h1 class="text-3xl text-[#D7A137] mb-6 text-center font-forum">
+      Resultados do Filtro
     </h1>
     
-    <!-- Resultados da Busca -->
     <ng-container *ngIf="filteredProducts.length; else noResults">
       <div class="flex justify-center flex-wrap gap-10">
         <app-product-info-card
@@ -20,7 +47,6 @@
       </div>
     </ng-container>
     
-    <!-- Caso nenhum produto seja encontrado -->
     <ng-template #noResults>
       <p class="text-white text-center">Nenhum produto encontrado.</p>
     </ng-template>
