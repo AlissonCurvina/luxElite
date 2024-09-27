@@ -5,9 +5,7 @@
     <div class="p-8 py-8 sm:p-5 bg-opacity-50 shadow-2xl flex flex-col items-center lg:w-2/3"> 
       <div class="space-y-12 w-full">
         <div class="space-y-4 text-center w-full">
-          <h3 class="text-5xl text-[#D7A137] font-forum">
-              Produtos
-          </h3>
+          <h3 class="text-5xl text-[#D7A137] font-forum">Produtos</h3>
         </div>
       </div>
 
@@ -27,7 +25,6 @@
         </div>
       </ng-container>
 
-      <!-- Sem Resultados -->
       <ng-template #noResults>
         <p class="text-white text-center">Nenhum produto encontrado.</p>
       </ng-template>
@@ -35,39 +32,27 @@
 
     <!-- Filtros à direita -->
     <div class="p-8 bg-black lg:w-1/3">
-      <!-- Filtro de Marcas -->
-      <h1 class="text-3xl text-[#D7A137] mb-6 text-center font-forum">
-        Filtrar por Marca
-      </h1>
-
+      <h1 class="text-3xl text-[#D7A137] mb-6 text-center font-forum">Filtrar por Marca</h1>
       <div class="flex flex-col items-start gap-4 mb-6">
-        <label 
-          *ngFor="let brand of availableBrands" 
-          class="text-white flex items-center space-x-2">
+        <label *ngFor="let brand of availableBrands" class="text-white flex items-center space-x-2">
           <input 
             type="checkbox" 
             [value]="brand" 
-            (change)="toggleBrand(brand)"
-            class="form-checkbox h-5 w-5 text-[#D7A137] border-gray-300 rounded"
+            (change)="toggleBrand(brand)" 
+            class="appearance-none w-5 h-5 border-2 border-[#D7A137] rounded-full bg-black checked:bg-[#D7A137] checked:border-transparent focus:outline-none"  
           />
           <span>{{ brand }}</span>
         </label>
       </div>
 
-      <!-- Filtro de Categorias -->
-      <h1 class="text-3xl text-[#D7A137] mb-6 text-center font-forum">
-        Filtrar por Categoria
-      </h1>
-
+      <h1 class="text-3xl text-[#D7A137] mb-6 text-center font-forum">Filtrar por Categoria</h1>
       <div class="flex flex-col items-start gap-4 mb-6">
-        <label 
-          *ngFor="let category of availableCategories" 
-          class="text-white flex items-center space-x-2">
+        <label *ngFor="let category of availableCategories" class="text-white flex items-center space-x-2">
           <input 
             type="checkbox" 
             [value]="category" 
-            (change)="toggleCategory(category)"
-            class="form-checkbox h-5 w-5 text-[#D7A137] border-gray-300 rounded"
+            (change)="toggleCategory(category)" 
+            class="appearance-none w-5 h-5 border-2 border-[#D7A137] bg-black rounded-full checked:bg-[#D7A137] checked:border-transparent focus:outline-none" 
           />
           <span>{{ category }}</span>
         </label>

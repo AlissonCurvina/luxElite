@@ -11,14 +11,14 @@ import { FormsModule } from '@angular/forms';
 	styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-	public selectedBrands: Set<string> = new Set(); // Para armazenar marcas selecionadas
-	public selectedCategories: Set<string> = new Set(); // Para armazenar categorias selecionadas
+	public selectedBrands: Set<string> = new Set(); //para armazenar marcas selecionadas
+	public selectedCategories: Set<string> = new Set(); //para armazenar categorias selecionadas
 	public filteredProducts: any[] = [];
-	public allProducts: any[] = []; // Armazenar todos os produtos
+	public allProducts: any[] = []; //armazenar todos os produtos
 	public availableBrands: string[] = ['Prada', 'Gucci', 'Louis Vuitton', 'Golden', 'Bulldog',
 		 'Poodle', 'Persa', 'Maine Coon', 'Siamês', 'Porsche', 'Ferrari', 'Mercedes-Benz', 'Cartier', 'Bulgari',
-		'Chapard']; // Marcas disponíveis
-	public availableCategories: string[] = ['Bolsas', 'Roupas', 'Carros', 'Pets', 'Backstory', 'Joias']; // Categorias disponíveis
+		'Chapard'];
+	public availableCategories: string[] = ['Bolsas', 'Roupas', 'Carros', 'Pets', 'Backstory', 'Joias']; 
 
 	constructor() {
 		this.allProducts = [
@@ -352,32 +352,32 @@ export class ProductsComponent implements OnInit {
 				includedInPackages: ['Diamante'],
 				brand: 'Luxo'
 			}
-			// Continue com o restante dos produtos, assegurando que todos os IDs são únicos
+
 		];
 
-		this.filteredProducts = this.allProducts; // Inicie exibindo todos os produtos
+		this.filteredProducts = this.allProducts; //inicie exibindo todos os produtos
 	}
 
 	ngOnInit() {
-		this.filterProducts(); // Filtra produtos na inicialização
+		this.filterProducts(); //filtra produtos na inicialização
 	}
 
 	public toggleBrand(brand: string) {
 		if (this.selectedBrands.has(brand)) {
-			this.selectedBrands.delete(brand); // Remove a marca se já estiver selecionada
+			this.selectedBrands.delete(brand); //remove a marca se já estiver selecionada
 		} else {
-			this.selectedBrands.add(brand); // Adiciona a marca se não estiver selecionada
+			this.selectedBrands.add(brand); //adiciona a marca se não estiver selecionada
 		}
-		this.filterProducts(); // Filtra produtos com base nas marcas selecionadas
+		this.filterProducts(); //filtra produtos com base nas marcas selecionadas
 	}
 
 	public toggleCategory(category: string) {
 		if (this.selectedCategories.has(category)) {
-			this.selectedCategories.delete(category); // Remove a categoria se já estiver selecionada
+			this.selectedCategories.delete(category); //remove a categoria se já estiver selecionada
 		} else {
-			this.selectedCategories.add(category); // Adiciona a categoria se não estiver selecionada
+			this.selectedCategories.add(category); //adiciona a categoria se não estiver selecionada
 		}
-		this.filterProducts(); // Filtra produtos com base nas categorias selecionadas
+		this.filterProducts(); //filtra produtos com base nas categorias selecionadas
 	}
 
 	public filterProducts() {
