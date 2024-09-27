@@ -15,8 +15,10 @@ export class ProductsComponent implements OnInit {
 	public selectedCategories: Set<string> = new Set(); // Para armazenar categorias selecionadas
 	public filteredProducts: any[] = [];
 	public allProducts: any[] = []; // Armazenar todos os produtos
-	public availableBrands: string[] = ['Prada', 'Gucci']; // Marcas disponíveis
-	public availableCategories: string[] = ['Bolsas', 'Roupas']; // Categorias disponíveis
+	public availableBrands: string[] = ['Prada', 'Gucci', 'Louis Vuitton', 'Golden', 'Bulldog',
+		 'Poodle', 'Persa', 'Maine Coon', 'Siamês', 'Porsche', 'Ferrari', 'Mercedes-Benz', 'Cartier', 'Bulgari',
+		'Chapard']; // Marcas disponíveis
+	public availableCategories: string[] = ['Bolsas', 'Roupas', 'Carros', 'Pets', 'Backstory', 'Joias']; // Categorias disponíveis
 
 	constructor() {
 		this.allProducts = [
@@ -228,7 +230,7 @@ export class ProductsComponent implements OnInit {
 				photos: ['assets/mercedes_s_class.jpg'],
 				price: 250,
 				includedInPackages: ['Premium'],
-				brand: 'Mercedes-Benz'
+				brand: 'Mercedes Benz'
 			},
 			{
 				id: 22,

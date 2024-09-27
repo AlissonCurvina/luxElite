@@ -1,65 +1,81 @@
-<div class="p-8 bg-black">
-  <!-- Filtro de Marcas -->
-  <h1 class="text-3xl text-[#D7A137] mb-6 text-center font-forum">
-    Filtrar por Marca
-  </h1>
+<div class="bg-black mt-0 grid gap-8 sm:grid-cols-1 lg:grid-cols-1 p-4 md:p-8">
+  <!-- Produtos e Filtros -->
+  <div class="flex flex-col lg:flex-row w-full">
+    <!-- Seção de Produtos -->
+    <div class="p-8 py-8 sm:p-5 bg-opacity-50 shadow-2xl flex flex-col items-center lg:w-2/3"> 
+      <div class="space-y-12 w-full">
+        <div class="space-y-4 text-center w-full">
+          <h3 class="text-5xl text-[#D7A137] font-forum">
+              Produtos
+          </h3>
+        </div>
+      </div>
 
-  <div class="flex justify-center flex-wrap gap-4 mb-6">
-    <label 
-      *ngFor="let brand of availableBrands" 
-      class="text-white flex items-center space-x-2">
-      <input 
-        type="checkbox" 
-        [value]="brand" 
-        (change)="toggleBrand(brand)"
-        class="form-checkbox h-5 w-5 text-[#D7A137] border-gray-300 rounded"
-      />
-      <span>{{ brand }}</span>
-    </label>
-  </div>
+      <ng-container *ngIf="filteredProducts.length; else noResults">
+        <div class="flex justify-center flex-wrap gap-10">
+          <app-product-info-card
+            *ngFor="let product of filteredProducts"
+            [id]="product.id"
+            [name]="product.name"
+            [description]="product.description"
+            [category]="product.category"
+            [photos]="product.photos"
+            [price]="product.price"
+            [brand]="product.brand"
+            [includedInPackages]="product.includedInPackages">
+          </app-product-info-card>
+        </div>
+      </ng-container>
 
-  <!-- Filtro de Categorias -->
-  <h1 class="text-3xl text-[#D7A137] mb-6 text-center font-forum">
-    Filtrar por Categoria
-  </h1>
-
-  <div class="flex justify-center flex-wrap gap-4 mb-6">
-    <label 
-      *ngFor="let category of availableCategories" 
-      class="text-white flex items-center space-x-2">
-      <input 
-        type="checkbox" 
-        [value]="category" 
-        (change)="toggleCategory(category)"
-        class="form-checkbox h-5 w-5 text-[#D7A137] border-gray-300 rounded"
-      />
-      <span>{{ category }}</span>
-    </label>
-  </div>
-
-  <!-- Resultados do Filtro -->
-  <h1 class="text-3xl text-[#D7A137] mb-6 text-center font-forum">
-    Resultados do Filtro
-  </h1>
-
-  <ng-container *ngIf="filteredProducts.length; else noResults">
-    <div class="flex justify-center flex-wrap gap-10">
-      <app-product-info-card
-        *ngFor="let product of filteredProducts"
-        [id]="product.id"
-        [name]="product.name"
-        [description]="product.description"
-        [category]="product.category"
-        [photos]="product.photos"
-        [price]="product.price"
-        [brand]="product.brand"
-        [includedInPackages]="product.includedInPackages">
-      </app-product-info-card>
+      <!-- Sem Resultados -->
+      <ng-template #noResults>
+        <p class="text-white text-center">Nenhum produto encontrado.</p>
+      </ng-template>
     </div>
-  </ng-container>
 
-  <!-- Sem Resultados -->
-  <ng-template #noResults>
-    <p class="text-white text-center">Nenhum produto encontrado.</p>
-  </ng-template>
+    <!-- Filtros à direita -->
+    <div class="p-8 bg-black lg:w-1/3">
+      <!-- Filtro de Marcas -->
+      <h1 class="text-3xl text-[#D7A137] mb-6 text-center font-forum">
+        Filtrar por Marca
+      </h1>
+
+      <div class="flex flex-col items-start gap-4 mb-6">
+        <label 
+          *ngFor="let brand of availableBrands" 
+          class="text-white flex items-center space-x-2">
+          <input 
+            type="checkbox" 
+            [value]="brand" 
+            (change)="toggleBrand(brand)"
+            class="form-checkbox h-5 w-5 text-[#D7A137] border-gray-300 rounded"
+          />
+          <span>{{ brand }}</span>
+        </label>
+      </div>
+
+      <!-- Filtro de Categorias -->
+      <h1 class="text-3xl text-[#D7A137] mb-6 text-center font-forum">
+        Filtrar por Categoria
+      </h1>
+
+      <div class="flex flex-col items-start gap-4 mb-6">
+        <label 
+          *ngFor="let category of availableCategories" 
+          class="text-white flex items-center space-x-2">
+          <input 
+            type="checkbox" 
+            [value]="category" 
+            (change)="toggleCategory(category)"
+            class="form-checkbox h-5 w-5 text-[#D7A137] border-gray-300 rounded"
+          />
+          <span>{{ category }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="relative w-full flex justify-center mb-0">
+  <div class="w-2/3 border-t-[1px] border-[#8a600c]"></div>
 </div>
