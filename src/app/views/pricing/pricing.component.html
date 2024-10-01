@@ -1,21 +1,34 @@
-<div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-    <div
-        class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-yellow-500">Descubra a elegância,
-        </h1>
-        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-yellow-500">viva o extraordinário!
-        </h1>
+<div class="relative flex flex-col items-center w-full h-screen px-4 mx-auto md:flex-row-reverse sm:px-6 bg-black"> 
+    <div class="flex items-center py-5 md:w-1/2 md:pb-20 md:pt-10 md:pl-10">
+        <div class="relative w-full p-3 rounded md:p-8">
+            <div class="rounded-lg bg-white text-black w-3/4">
+                <img src="../../../assets/fundo_pacotes.jpg" />
+            </div>
+        </div>
     </div>
-    <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-        <img class="object-cover object-center rounded" alt="hero" src="https://www.svgrepo.com/show/358718/logo-windows.svg">
+    <div class="flex items-center py-5 md:w-1/2 md:pb-20 md:pt-10 md:pr-10">
+        <div class="text-left pl-20"> <!-- Adicionado padding à esquerda -->
+            <h2 class="text-4xl font-forum text-[#D7A137] sm:text-5xl sm:leading-none md:text-5xl">
+                Descubra a elegância, viva o extraordinário!
+            </h2>
+        </div>
     </div>
 </div>
-<h1 class="text-3xl text-center p-4 text-yellow-500">
-    Todos os nossos pacotes
-</h1>
-<h4 class="text-center text-dark p-4 text-yellow-500">
-    Todos os items dos nossos pacotes são escolhidos pelo cliente no momento da assinatura
-</h4>
+
+<!-- Travessão acima do título ocupando toda a largura da página -->
+<section class="bg-black mb-0 border-t w-1/2 mx-auto border-[#AD760C]">
+</section>
+
+
+<div class="bg-black"> 
+    <h1 class="text-3xl font-forum text-center p-4 text-[#D7A137]">
+        Todos os nossos pacotes
+    </h1>
+    <h4 class="text-center text-dark p-4 text-[#D7A137]">
+        Todos os items dos nossos pacotes são escolhidos pelo cliente no momento da assinatura
+    </h4>
+</div>
+
 <app-pricing-info-card
     *ngFor="let card of cardsList"
     [cardTitle]="card.title"

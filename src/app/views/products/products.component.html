@@ -1,105 +1,66 @@
+<div class="bg-black mt-0 grid gap-8 sm:grid-cols-1 lg:grid-cols-1 p-4 md:p-8">
+  <!-- Produtos e Filtros -->
+  <div class="flex flex-col lg:flex-row w-full">
+    <!-- Seção de Produtos -->
+    <div class="p-8 py-8 sm:p-5 bg-opacity-50 shadow-2xl flex flex-col items-center lg:w-2/3"> 
+      <div class="space-y-12 w-full">
+        <div class="space-y-4 text-center w-full">
+          <h3 class="text-5xl text-[#D7A137] font-forum">Produtos</h3>
+        </div>
+      </div>
 
-<div class="p-8 bg-black">
-    <!-- Título para Bolsas de Luxo -->
-    <h1 class="text-2xl border-b border-yellow-200 font-bold text-[#D7A137] mb-6">BOLSAS DE LUXO</h1>
-    
-    <div class="flex justify-center flex-wrap gap-10">
-      <app-product-info-card 
-          *ngFor="let product of bolsasDeLuxo"
-          [id]="product.id"
-          [name]="product.name"
-          [description]="product.description"
-          [category]="product.category"
-          [photos]="product.photos"
-          [price]="product.price"
-          [brand]="product.brand"
-          [includedInPackages]="product.includedInPackages">
-      </app-product-info-card>
-    </div>
-  
-    <!-- Título para Roupas de Luxo -->
-    <h1 class="text-2xl border-b border-yellow-200 font-bold text-[#D7A137] mt-10 mb-6">ROUPAS DE LUXO</h1>
-  
-    <div class="flex justify-center flex-wrap gap-10">
-      <app-product-info-card 
-          *ngFor="let product of roupasDeLuxo"
-          [id]="product.id"
-          [name]="product.name"
-          [description]="product.description"
-          [category]="product.category"
-          [photos]="product.photos"
-          [price]="product.price"
-          [brand]="product.brand"
-          [includedInPackages]="product.includedInPackages">
-      </app-product-info-card>
-    </div>
-  
-    <!-- Título para Pets de Luxo   -->
-    <h1 class="text-2xl border-b border-yellow-200 font-bold text-[#D7A137] mt-10 mb-6">PETS DE LUXO</h1>
-  
-    <div class="flex justify-center flex-wrap gap-10">
-      <app-product-info-card 
-          *ngFor="let product of petsDeLuxo"
-          [id]="product.id"
-          [name]="product.name"
-          [description]="product.description"
-          [category]="product.category"
-          [photos]="product.photos"
-          [price]="product.price"
-          [brand]="product.brand"
-          [includedInPackages]="product.includedInPackages">
-      </app-product-info-card>
-    </div>
-  
-    <!-- Título para Carros de Luxo -->
-    <h1 class="text-2xl border-b border-yellow-200 font-bold text-[#D7A137] mt-10 mb-6">CARROS DE LUXO</h1>
-  
-    <div class="flex justify-center flex-wrap gap-10">
-      <app-product-info-card 
-          *ngFor="let product of carrosDeLuxo"
-          [id]="product.id"
-          [name]="product.name"
-          [description]="product.description"
-          [category]="product.category"
-          [photos]="product.photos"
-          [price]="product.price"
-          [brand]="product.brand"
-          [includedInPackages]="product.includedInPackages">
-      </app-product-info-card>
-    </div>
-  
-    <!-- Título para Joias de Luxo -->
-    <h1 class="text-2xl border-b border-yellow-200 font-bold text-[#D7A137] mt-10 mb-6">JOIAS DE LUXO</h1>
-  
-    <div class="flex justify-center flex-wrap gap-10">
-      <app-product-info-card 
-          *ngFor="let product of joiasDeLuxo"
-          [id]="product.id"
-          [name]="product.name"
-          [description]="product.description"
-          [category]="product.category"
-          [photos]="product.photos"
-          [price]="product.price"
-          [brand]="product.brand"
-          [includedInPackages]="product.includedInPackages">
-      </app-product-info-card>
+      <ng-container *ngIf="filteredProducts.length; else noResults">
+        <div class="flex justify-center flex-wrap gap-10">
+          <app-product-info-card
+            *ngFor="let product of filteredProducts"
+            [id]="product.id"
+            [name]="product.name"
+            [description]="product.description"
+            [category]="product.category"
+            [photos]="product.photos"
+            [price]="product.price"
+            [brand]="product.brand"
+            [includedInPackages]="product.includedInPackages">
+          </app-product-info-card>
+        </div>
+      </ng-container>
+
+      <ng-template #noResults>
+        <p class="text-white text-center">Nenhum produto encontrado.</p>
+      </ng-template>
     </div>
 
-    <!-- Título para Backstory -->
-  <h1 class="text-2xl border-b border-yellow-200 font-bold text-[#D7A137] mt-10 mb-6">BACKSTORY</h1>
+    <!-- Filtros à direita -->
+    <div class="p-8 bg-black lg:w-1/3">
+      <h1 class="text-3xl text-[#D7A137] mb-6 text-center font-forum">Filtrar por Marca</h1>
+      <div class="flex flex-col items-start gap-4 mb-6">
+        <label *ngFor="let brand of availableBrands" class="text-white flex items-center space-x-2">
+          <input 
+            type="checkbox" 
+            [value]="brand" 
+            (change)="toggleBrand(brand)" 
+            class="appearance-none w-5 h-5 border-2 border-[#D7A137] rounded-full bg-black checked:bg-[#D7A137] checked:border-transparent focus:outline-none"  
+          />
+          <span>{{ brand }}</span>
+        </label>
+      </div>
 
-  <div class="flex justify-center flex-wrap gap-10">
-    <app-product-info-card 
-        *ngFor="let product of backstory"
-        [id]="product.id"
-        [name]="product.name"
-        [description]="product.description"
-        [category]="product.category"
-        [photos]="product.photos"
-        [price]="product.price"
-        [brand]="product.brand"
-        [includedInPackages]="product.includedInPackages">
-    </app-product-info-card>
+      <h1 class="text-3xl text-[#D7A137] mb-6 text-center font-forum">Filtrar por Categoria</h1>
+      <div class="flex flex-col items-start gap-4 mb-6">
+        <label *ngFor="let category of availableCategories" class="text-white flex items-center space-x-2">
+          <input 
+            type="checkbox" 
+            [value]="category" 
+            (change)="toggleCategory(category)" 
+            class="appearance-none w-5 h-5 border-2 border-[#D7A137] bg-black rounded-full checked:bg-[#D7A137] checked:border-transparent focus:outline-none" 
+          />
+          <span>{{ category }}</span>
+        </label>
+      </div>
+    </div>
   </div>
-  </div>
-  
+</div>
+
+<div class="relative w-full flex justify-center mb-0">
+  <div class="w-2/3 border-t-[1px] border-[#8a600c]"></div>
+</div>
