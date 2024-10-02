@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import { ProductInfoCardComponent } from '../../components/product-info-card/product-info-card.component';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
 	selector: 'app-products',
@@ -10,17 +11,21 @@ import { FormsModule } from '@angular/forms';
 	templateUrl: './products.component.html',
 	styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit {
-	public selectedBrands: Set<string> = new Set(); //para armazenar marcas selecionadas
-	public selectedCategories: Set<string> = new Set(); //para armazenar categorias selecionadas
-	public filteredProducts: any[] = [];
-	public allProducts: any[] = []; //armazenar todos os produtos
-	public availableBrands: string[] = ['Prada', 'Gucci', 'Louis Vuitton', 'Golden', 'Bulldog',
-		 'Poodle', 'Persa', 'Maine Coon', 'Siamês', 'Porsche', 'Ferrari', 'Mercedes-Benz', 'Cartier', 'Bulgari',
-		'Chapard'];
-	public availableCategories: string[] = ['Bolsas', 'Roupas', 'Carros', 'Pets', 'Backstory', 'Joias']; 
 
-	constructor() {
+export class ProductsComponent implements OnInit {
+	public selectedBrands: Set<string> = new Set();
+	public selectedCategories: Set<string> = new Set();
+	public filteredProducts: any[] = [];
+	public allProducts: any[] = [];
+
+	public availableBrands: string[] = ['Prada', 'Gucci', 'Louis Vuitton', 'Golden', 'Bulldog',
+		'Poodle', 'Persa', 'Maine Coon', 'Siamês', 'Porsche', 'Ferrari', 'Mercedes-Benz', 'Cartier', 'Bulgari',
+	   'Chapard'];
+   	
+	public availableCategories: string[] = ['Bolsas', 'Roupas', 'Carros', 'Pets', 'Backstory', 'Joias']; 
+	// ... (restante da sua classe)
+
+	constructor(private route: ActivatedRoute) {
 		this.allProducts = [
 			{
 				id: 1,
@@ -354,12 +359,14 @@ export class ProductsComponent implements OnInit {
 			}
 
 		];
-
-		this.filteredProducts = this.allProducts; //inicie exibindo todos os produtos
 	}
 
 	ngOnInit() {
-		this.filterProducts(); //filtra produtos na inicialização
+		this.route.queryParams.subscribe(params => {
+			const searchTerm = params['search'];
+			this.filterProducts(searchTerm); // Chama o filtro com o termo de busca
+		});
+		this.filterProducts(); // Para filtrar por marcas e categorias
 	}
 
 	public toggleBrand(brand: string) {
@@ -380,10 +387,11 @@ export class ProductsComponent implements OnInit {
 		this.filterProducts(); //filtra produtos com base nas categorias selecionadas
 	}
 
-	public filterProducts() {
+	public filterProducts(searchTerm?: string) {
 		this.filteredProducts = this.allProducts.filter(product =>
 			(this.selectedBrands.size === 0 || this.selectedBrands.has(product.brand)) &&
-			(this.selectedCategories.size === 0 || this.selectedCategories.has(product.category))
+			(this.selectedCategories.size === 0 || this.selectedCategories.has(product.category)) &&
+			(!searchTerm || product.name.toLowerCase().includes(searchTerm.toLowerCase())) // Filtro pelo termo de busca
 		);
 	}
 }
