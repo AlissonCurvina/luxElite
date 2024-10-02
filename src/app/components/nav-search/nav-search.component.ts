@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // Importe o FormsModule
 import { CommonModule } from '@angular/common'; // Importe o CommonModule se necessário
-import { SearchService } from '../../search.service'; // Importe o serviço de busca
+import { FilterService } from '../../services/filter/filter.service';
+import { SearchService } from '../../services/search/search.service'; // Importe o serviço de busca
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-search',
@@ -10,14 +12,25 @@ import { SearchService } from '../../search.service'; // Importe o serviço de b
   templateUrl: './nav-search.component.html',
   styleUrls: ['./nav-search.component.css']
 })
-export class NavSearchComponent {
-  public searchTerm: string = '';
 
-  constructor(private searchService: SearchService) {}
+export class NavSearchComponent {
+  private _searchTerm: string = '';
+
+  constructor(private router: Router, private filterService: FilterService, private searchService: SearchService) {}
+
+  public get searchTerm() : string {
+    return this._searchTerm;
+  }
+
+  public set searchTerm(value: string) {
+    this._searchTerm = value;
+  }
 
   // Função chamada ao clicar na lupa (submit do form)
   search() {
     // Atualiza o termo de busca no serviço
     this.searchService.setSearchTerm(this.searchTerm);
+    this.router.navigate(['/products'], { queryParams: { search: this.searchTerm } }); // Redireciona para a página de produtos com o termo de busca
+
   }
 }
