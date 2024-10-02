@@ -13,14 +13,14 @@
         <div class="flex justify-center flex-wrap gap-10">
           <app-product-info-card
             *ngFor="let product of filteredProducts"
-            [id]="product.id"
-            [name]="product.name"
-            [description]="product.description"
-            [category]="product.category"
-            [photos]="product.photos"
-            [price]="product.price"
-            [brand]="product.brand"
-            [includedInPackages]="product.includedInPackages">
+            [id]="product.getId()"
+            [name]="product.getName()"
+            [description]="product.getDescription()"
+            [category]="product.getCategory()"
+            [photos]="product.getPhotos()"
+            [price]="product.getPrice()"
+            [brand]="product.getBrand()"
+            [includedInPackages]="product.getIncludedInPackages()">
           </app-product-info-card>
         </div>
       </ng-container>
