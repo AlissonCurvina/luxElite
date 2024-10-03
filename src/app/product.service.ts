@@ -183,7 +183,7 @@ export class ProductService {
       name: 'Siamês',
       category: 'Pets',
       description: 'Gato Siamês sofisticado.',
-      photos: ['assets/gato_siamese.jpg'],
+      photos: ['assets/gato_siames.jpg'],
       price: 45,
       includedInPackages: ['Elegance'],
       brand: 'Siamês'
