@@ -39,9 +39,9 @@ const mockProducts = [
 	},
 	{
 		id: 4,
-		name: 'LV White',
+		name: 'Louis Vuitton White',
 		category: 'Bolsas',
-		description: 'Bolsa Louis Vuitton branca LuxElite.',
+		description: 'Bolsa Louis Vuitton branca.',
 		photos: ['assets/lv_white.jpg'],
 		price: 100,
 		includedInPackages: ['LuxElite'],
@@ -49,7 +49,7 @@ const mockProducts = [
 	},
 	{
 		id: 5,
-		name: 'LV Black',
+		name: 'Louis Vuitton Black',
 		category: 'Bolsas',
 		description: 'Bolsa Louis Vuitton preta básica.',
 		photos: ['assets/lv_black.jpg'],
@@ -59,7 +59,7 @@ const mockProducts = [
 	},
 	{
 		id: 6,
-		name: 'LV Brown',
+		name: 'Louis Vuitton Brown',
 		category: 'Bolsas',
 		description: 'Bolsa Louis Vuitton marrom Elegance.',
 		photos: ['assets/lv_brown.jpg'],
@@ -182,7 +182,7 @@ const mockProducts = [
 		name: 'Siamês',
 		category: 'Pets',
 		description: 'Gato Siamês sofisticado.',
-		photos: ['assets/gato_siamese.jpg'],
+		photos: ['assets/gato_siames.jpg'],
 		price: 45,
 		includedInPackages: ['Elegance'],
 		brand: 'Siamês'
