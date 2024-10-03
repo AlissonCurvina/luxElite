@@ -4,6 +4,7 @@ import { ProductInfoCardComponent } from '../../components/product-info-card/pro
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProductModel } from '../../models/product-model';
+import { Router } from '@angular/router';
 
 const mockProducts = [
 	{
@@ -20,7 +21,7 @@ const mockProducts = [
 		id: 2,
 		name: 'Chanel Red',
 		category: 'Bolsas',
-		description: 'Bolsa Chanel vermelha de diamante.',
+		description: 'Bolsa Chanel vermelha.',
 		photos: ['assets/chanel_red.jpg'],
 		price: 200,
 		includedInPackages: ['Diamante'],
@@ -359,7 +360,7 @@ export class ProductsComponent implements OnInit {
    	
 	public availableCategories: string[] = ['Bolsas', 'Roupas', 'Carros', 'Pets', 'Backstory', 'Joias']; 
 
-	constructor(private route: ActivatedRoute) {
+	constructor(private route: ActivatedRoute, private router: Router) {
 		this.allProducts = [];
 
 		mockProducts.forEach(product => (
@@ -408,5 +409,10 @@ export class ProductsComponent implements OnInit {
 			(this.selectedCategories.size === 0 || this.selectedCategories.has(product.getCategory())) &&
 			(!searchTerm || product.getName().toLowerCase().includes(searchTerm.toLowerCase())) // Filtro pelo termo de busca
 		);
+	}
+
+	viewProductDetails(productId: number) { //essa faz parte da logica pra detalhes
+		console.log('Navigating to product details for ID:', productId);
+		this.router.navigate(['/product-details', productId]);
 	}
 }

@@ -20,7 +20,8 @@
             [photos]="product.getPhotos()"
             [price]="product.getPrice()"
             [brand]="product.getBrand()"
-            [includedInPackages]="product.getIncludedInPackages()">
+            [includedInPackages]="product.getIncludedInPackages()"
+            (detailsClick)="viewProductDetails($event)"> 
           </app-product-info-card>
         </div>
       </ng-container>

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule, NgForOf, NgFor } from '@angular/common';
-
+import { EventEmitter, Output } from '@angular/core'
 @Component({
   selector: 'app-product-info-card',
   standalone: true,
@@ -17,4 +17,10 @@ export class ProductInfoCardComponent {
 	@Input() price!: number;
   @Input() includedInPackages!: string[];
   @Input() brand!: string;
+
+  @Output() detailsClick = new EventEmitter<number>();
+
+  viewDetails() {
+    this.detailsClick.emit(this.id);
+  }
 }

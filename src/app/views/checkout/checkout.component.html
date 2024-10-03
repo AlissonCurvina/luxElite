@@ -8,29 +8,52 @@
 </div>
 <!-- fim do fundo de luzes -->
 
+<div class="bg-black min-h-screen flex items-center justify-center p-4 sm:p-8">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-16"> <!-- Aumentando o gap entre as seções -->
+    <!-- Coluna da Forma de Pagamento -->
+    <div class="flex flex-col justify-between">
+      <!-- Meu Cadastro -->
+      <div class="flex justify-center items-center space-x-4 mb-8">
+        <button class="bg-[#D7A137] text-xl sm:text-2xl text-black px-8 sm:px-12 py-2 sm:py-3 rounded-full flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4s-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+          </svg>
+          <span>MEU CADASTRO</span>
+        </button>
+      </div>
 
-<div class="bg-black mt-0 grid gap-8 sm:grid-cols-2 lg:grid-cols-2 p-4 md:p-8">
-    <!-- quem somos -->
-    <div class="p-8 py-12 sm:p-12 bg-opacity-50 shadow-2xl flex flex-col items-center">
-      <div class="space-y-12">
-        <button class="bg-black text-white font-forum px-4 py-3 border-2 border-[#D7A137] text-3xl">MEU CADASTRO</button>
-        <div class="space-y-4 text-center">
-            
-            <h3 class="text-3xl text-[#9b6c0e] font-forum">FORMAS DE PAGAMENTO</h3>
-            <button class="bg-black text-white font-forum px py-3 border-2 border-[#D7A137] text-3xl">Pix</button>
-        </div>
+      <!-- Forma de Pagamento -->
+      <h2 class="text-[#D7A137] font-forum text-2xl sm:text-3xl mb-6">FORMA DE PAGAMENTO</h2>
+
+      <!-- Botões de Pagamento -->
+      <div class="space-y-4">
+        <button class="w-full bg-black border-2 border-[#D7A137] text-xl sm:text-2xl text-white py-2">Pix</button>
+        <button class="w-full bg-black border-2 border-[#D7A137] text-xl sm:text-2xl text-white py-2">Boleto Bancário</button>
+        <button class="w-full bg-black border-2 border-[#D7A137] text-xl sm:text-2xl text-white py-2">Cartão</button>
       </div>
     </div>
-  
-    <!-- o que fazemos -->
-    <div class="p-8 py-12 sm:p-12 bg-opacity-50 shadow-2xl flex flex-col items-center">
-      <div class="space-y-12">
-        <div class="space-y-4 text-center">
-          <h3 class="text-3xl text-[#9b6c0e] font-abhaya">O QUE FAZEMOS?</h3>
-          
+
+    <!-- Coluna Confirmar Compra -->
+    <div class="flex flex-col">
+      <!-- Título "CONFIRMAR COMPRA" fora do quadrado -->
+      <h2 class="text-[#D7A137] font-forum text-2xl sm:text-3xl mb-4 text-center">CONFIRMAR COMPRA</h2>
+
+      <!-- Conteúdo dentro do quadrado -->
+      <div class="bg-black border border-[#4D380F] p-6 rounded-3xl flex-grow flex flex-col justify-between" style="height: 300px;">
+        <!-- Título "Itens" -->
+        <h3 class="text-[#A9A48E] font-forum text-1xl sm:text-2xl mb-4">ITENS</h3>
+
+        <div class="text-[#D4A017] space-y-2 pb-10 mb-8">
+          <div class="text-1xl text-white flex justify-between">
+            <span>1x Pacote Diamante</span>
+            <span class="text-[#AD760C]">   R$ 300,00</span>
+          </div>
         </div>
+
+        <!-- Botão Finalizar Compra -->
+        <button class="w-full bg-[#D7A137] rounded-2xl text-black py-2">FINALIZAR COMPRA</button>
       </div>
     </div>
+
   </div>
-  
- 
+</div>

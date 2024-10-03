@@ -26,7 +26,7 @@ export const routes: Routes = [
     { path: 'partners', component:PartnersComponent },
     { path: 'create-new-user', component:CreateNewUserComponent },
     { path: 'login', component:LoginComponent },
-    { path: 'product-details', component:ProductDetailsComponent },
+    { path: 'product-details/:id', component:ProductDetailsComponent }, //logica para detalhes
     { path: 'checkout', component:CheckoutComponent },
     { path: 'forget-password', component:ForgetPasswordComponent},
     { path: 'search-results', component:SearchResultsComponent},
