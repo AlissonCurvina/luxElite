@@ -3,7 +3,7 @@ import { CommonModule, NgFor } from '@angular/common';
 import { ProductInfoCardComponent } from '../../components/product-info-card/product-info-card.component';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ProductModel } from '../../models/product-model';
+import { ProductModel } from '../../models/product-model/product-model';
 import { Router } from '@angular/router';
 
 const mockProducts = [

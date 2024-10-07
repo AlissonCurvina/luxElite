@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { PricingInfoCardComponent } from '../../components/pricing-info-card/pricing-info-card.component';
 import { CommonModule, NgForOf, NgFor } from '@angular/common';
 
-
-
 @Component({
     selector: 'app-pricing',
     standalone: true,
@@ -15,6 +13,7 @@ import { CommonModule, NgForOf, NgFor } from '@angular/common';
 export class PricingComponent {
     public cardsList: any[] = [
         {
+            id: 0,
             title:'Básico',
 		    smallInfo: 'Descubra o mundo do luxo com o nosso pacote básico, criado para oferecer uma experiência exclusiva e sofisticada sem comprometer o bolso', 
 		    packFeatures: [
@@ -25,6 +24,7 @@ export class PricingComponent {
 		    packPrice: 750
         },
         {
+            id: 1,
             title:'Premium',
 		    smallInfo: 'Eleve sua experiência com o pacote premium. Cada detalhe deste pacote é pensado para proporcionar uma experiência repleta de conforto e elegância', 
 		    packFeatures: [
@@ -36,6 +36,7 @@ export class PricingComponent {
 		    packPrice: '1K'
         },
         {
+            id: 2,
             title:'Elegance',
 		    smallInfo: 'O pacote elegance foi criado para os assinantes que desejam um nível ainda mais elevado de exclusividade e personalização', 
 		    packFeatures: [
@@ -48,6 +49,7 @@ export class PricingComponent {
 		    packPrice: '3K'
         },
         {
+            id: 3,
             title:'Diamante',
 		    smallInfo: 'O pacote diamante é para aqueles que querem experienciar o luxo e a elegância como um verdadeiro herdeiro', 
 		    packFeatures: [
@@ -61,6 +63,7 @@ export class PricingComponent {
 		    packPrice: '10K'
         },
         {
+            id: 4,
             title:'Lux Elite',
 		    smallInfo: 'O máximo em luxo e exclusividade para quem busca o melhor dos melhores', 
 		    packFeatures: [

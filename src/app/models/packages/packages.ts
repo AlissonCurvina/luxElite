@@ -1,23 +1,18 @@
-export class ProductModel {
-
+export class Packages {
     constructor(
-        private id: number,
+        private id: number = 0,
         private name: string = '',
-        private category: string = '',
         private description: string = '',
         private photos: string[] = [],
         private price: number,
-        private includedInPackages: string[] = [],
-        private brand: string = ''
+        private includedProducts: string[] = [],
     ) {
         this.setId(id);
         this.setName(name);
-        this.setCategory(category);
         this.setDescription(description);
         this.setPhotos(photos);
         this.setPrice(price);
-        this.setIncludedInPackages(includedInPackages);
-        this.setBrand(brand);
+        this.setIncludedProducts(includedProducts);
     }
 
     public getId(): number {
@@ -35,15 +30,6 @@ export class ProductModel {
 
     public setName(name: string): void {
         this.name = name;
-    }
-
-    // Getter e Setter para category
-    public getCategory(): string {
-        return this.category;
-    }
-
-    public setCategory(category: string): void {
-        this.category = category;
     }
 
     // Getter e Setter para description
@@ -74,20 +60,11 @@ export class ProductModel {
     }
 
     // Getter e Setter para includedInPackages
-    public getIncludedInPackages(): string[] {
-        return this.includedInPackages;
+    public getIncludedProducts(): string[] {
+        return this.includedProducts;
     }
 
-    public setIncludedInPackages(includedInPackages: string[]): void {
-        this.includedInPackages = includedInPackages;
-    }
-
-    // Getter e Setter para brand
-    public getBrand(): string {
-        return this.brand;
-    }
-
-    public setBrand(brand: string): void {
-        this.brand = brand;
+    public setIncludedProducts(includedProducts: string[]): void {
+        this.includedProducts = includedProducts;
     }
 }

@@ -12,15 +12,18 @@
         </div>
         <div class="flex -mx-2 mb-4">
           <div class="w-1/2 px-2">
-            <button (click)="addToCart(product)" class="w-full bg-[#D7A137] font-forum font-bold text-black border-2 border-[#D7A137] py-2 px-4 rounded-full hover:bg-[#8f6a43]">
-              Selecionar pacote incluso
+            <button 
+              routerLink="/pricing" 
+              routerLinkActive="active" 
+              ariaCurrentWhenActive="page" class="w-full bg-[#D7A137] font-forum font-bold text-black border-2 border-[#D7A137] py-2 px-4 rounded-full hover:bg-[#8f6a43]">
+              Ir para seleção de pacotes
             </button>
           </div>
-          <div class="w-1/2 px-2">
+          <!-- <div class="w-1/2 px-2">
             <button (click)="addToCart(product)" class="w-full bg-black font-forum text-white border-2 border-[#D7A137] py-2 px-4 rounded-full hover:bg-[#8f6a43]">
               Acrescentar no pacote atual
             </button>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="md:flex-1 px-4">

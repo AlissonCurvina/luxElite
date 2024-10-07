@@ -12,6 +12,7 @@ import { RouterModule, Routes } from '@angular/router';
 })
 
 export class PricingInfoCardComponent {
+	@Input() packageId!: string;
 	@Input() cardTitle!: string;
 	@Input() cardSmallInfo!: string;
 	@Input() packFeatures!: string[];
