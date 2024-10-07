@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ProductService } from '../../product.service';// Importe seu serviço aqui
+import { ProductService } from '../../services/product/product.service';// Importe seu serviço aqui
 import { NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -32,6 +32,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart(product: any) {
-    // lógica para adicionar ao carrinho
+    // lógica para adicionar ao carrinho feita futuramente
   }
 }

@@ -1,59 +1,60 @@
-<div class="bg-cover bg-center h-[40vh] flex justify-center items-center"
+<div class="bg-cover bg-center h-[20vh] flex justify-center items-center pb-0"
      style="background-image: url('../../../assets/fundo .jpg');"> 
-    <div class="flex flex-col justify-center items-start text-left w-full px-20"> <!-- Alinhando à esquerda e adicionando padding -->
-        <h1 class="text-4xl font-bold font-forum text-[#D7A137] ml-4">CHECKOUT</h1> <!-- Adicionando margem à esquerda -->
+    <div class="flex flex-col justify-center items-center text-center w-full">
+        <h1 class="text-4xl text-[#D7A137] font-cinzel">CHECKOUT</h1>
     </div>
-    <div class="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-white shadow-xl rounded-lg text-gray-900">
+    <div class="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto bg-white shadow-xl rounded-lg text-gray-900"> <!-- Removido o mt-4 para reduzir a margem superior -->
     </div>
 </div>
 <!-- fim do fundo de luzes -->
 
-<div class="bg-black min-h-screen flex items-center justify-center p-4 sm:p-8">
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-16"> <!-- Aumentando o gap entre as seções -->
-    <!-- Coluna da Forma de Pagamento -->
-    <div class="flex flex-col justify-between">
-      <!-- Meu Cadastro -->
-      <div class="flex justify-center items-center space-x-4 mb-8">
-        <button class="bg-[#D7A137] text-xl sm:text-2xl text-black px-8 sm:px-12 py-2 sm:py-3 rounded-full flex items-center space-x-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4s-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-          </svg>
-          <span>MEU CADASTRO</span>
-        </button>
-      </div>
+<div class="bg-black p-6 pt-0 min-h-screen flex items-center justify-center">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-16 w-full max-w-6xl"> 
+      <!-- coluna das formas de pagamento (lado esquerdo) -->
+      <div class="flex flex-col">
+          <h2 class="text-3xl font-forum text-[#D7A137] mb-6">FORMAS DE PAGAMENTO</h2>
 
-      <!-- Forma de Pagamento -->
-      <h2 class="text-[#D7A137] font-forum text-2xl sm:text-3xl mb-6">FORMA DE PAGAMENTO</h2>
+          <div *ngIf="selectedPacks.length > 0" class="space-y-4">
+              <div class="mt-6">
+                  <div class="flex flex-col space-y-4">
+                      <label class="flex items-center">
+                          <input type="radio" name="paymentMethod" value="Pix" [(ngModel)]="selectedPaymentMethod" class="mr-2">
+                          <span class="text-white">Pix</span>
+                      </label>
+                      <label class="flex items-center">
+                          <input type="radio" name="paymentMethod" value="Cartão" [(ngModel)]="selectedPaymentMethod" class="mr-2">
+                          <span class="text-white">Cartão</span>
+                      </label>
+                      <label class="flex items-center">
+                          <input type="radio" name="paymentMethod" value="Boleto" [(ngModel)]="selectedPaymentMethod" class="mr-2">
+                          <span class="text-white">Boleto</span>
+                      </label>
+                  </div>
+              </div>
 
-      <!-- Botões de Pagamento -->
-      <div class="space-y-4">
-        <button class="w-full bg-black border-2 border-[#D7A137] text-xl sm:text-2xl text-white py-2">Pix</button>
-        <button class="w-full bg-black border-2 border-[#D7A137] text-xl sm:text-2xl text-white py-2">Boleto Bancário</button>
-        <button class="w-full bg-black border-2 border-[#D7A137] text-xl sm:text-2xl text-white py-2">Cartão</button>
-      </div>
-    </div>
-
-    <!-- Coluna Confirmar Compra -->
-    <div class="flex flex-col">
-      <!-- Título "CONFIRMAR COMPRA" fora do quadrado -->
-      <h2 class="text-[#D7A137] font-forum text-2xl sm:text-3xl mb-4 text-center">CONFIRMAR COMPRA</h2>
-
-      <!-- Conteúdo dentro do quadrado -->
-      <div class="bg-black border border-[#4D380F] p-6 rounded-3xl flex-grow flex flex-col justify-between" style="height: 300px;">
-        <!-- Título "Itens" -->
-        <h3 class="text-[#A9A48E] font-forum text-1xl sm:text-2xl mb-4">ITENS</h3>
-
-        <div class="text-[#D4A017] space-y-2 pb-10 mb-8">
-          <div class="text-1xl text-white flex justify-between">
-            <span>1x Pacote Diamante</span>
-            <span class="text-[#AD760C]">   R$ 300,00</span>
+              <button (click)="finalizePurchase()" class="mt-8 w-full bg-[#D7A137] font-forum text-black py-3 rounded-2xl text-lg font-bold">
+                  FINALIZAR COMPRA
+              </button>
           </div>
-        </div>
-
-        <!-- Botão Finalizar Compra -->
-        <button class="w-full bg-[#D7A137] rounded-2xl text-black py-2">FINALIZAR COMPRA</button>
       </div>
-    </div>
 
+      <!-- coluna do carrinho de compras (lado direito) -->
+      <div class="w-full max-w-2xl bg-black border border-[#4D380F] p-6 rounded-3xl">
+          <h2 class="text-3xl font-forum text-[#D7A137] mb-6">CARRINHO DE COMPRAS</h2>
+
+          <div *ngIf="selectedPacks.length > 0; else emptyCart">
+              <ul class="mb-6">
+                  <li *ngFor="let item of selectedPacks" class="flex justify-between items-center mb-4 p-4 bg-[#21211F] text-white rounded-lg">
+                      <span>{{ item.title }}</span>
+                      <span class="text-[#D7A137]">{{ item.price | currency:'BRL':'symbol' }}</span>
+                      <button (click)="removeItem(item)" class="bg-red-500 text-white px-4 py-1 rounded-2xl">Excluir</button>
+                  </li>
+              </ul>
+          </div>
+
+          <ng-template #emptyCart>
+              <p class="text-gray-300">Seu carrinho está vazio.</p>
+          </ng-template>
+      </div>
   </div>
 </div>

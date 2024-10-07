@@ -19,20 +19,21 @@
 <section class="bg-black mb-0 border-t w-1/2 mx-auto border-[#AD760C]">
 </section>
 
-
 <div class="bg-black"> 
     <h1 class="text-3xl font-forum text-center p-4 text-[#D7A137]">
         Todos os nossos pacotes
     </h1>
     <h4 class="text-center text-dark p-4 text-[#b2ae9b]">
-        Todos os items dos nossos pacotes são escolhidos pelo cliente no momento da assinatura
+        Todos os itens dos nossos pacotes são escolhidos pelo cliente no momento da assinatura
     </h4>
 </div>
 
+<!-- Corrigido: o onSubscribe agora está na linha correta -->
 <app-pricing-info-card
     *ngFor="let card of cardsList"
     [cardTitle]="card.title"
     [cardSmallInfo]="card.smallInfo"
     [packFeatures]="card.packFeatures"
-    [packPrice]="card.packPrice">
+    [packPrice]="card.packPrice"
+    [onSubscribe]="addToCart.bind(this, card)">
 </app-pricing-info-card>

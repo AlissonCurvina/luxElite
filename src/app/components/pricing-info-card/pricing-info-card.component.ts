@@ -1,23 +1,27 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule, NgForOf, NgFor } from '@angular/common';
-import { LoginComponent } from '../../views/login/login.component';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
 	selector: 'app-pricing-info-card',
 	standalone: true,
 	imports: [NgForOf, NgFor, CommonModule, RouterModule],
 	templateUrl: './pricing-info-card.component.html',
-	styleUrl: './pricing-info-card.component.css'
+	styleUrls: ['./pricing-info-card.component.css'] // Corrigido de styleUrl para styleUrls
 })
-
 export class PricingInfoCardComponent {
 	@Input() cardTitle!: string;
 	@Input() cardSmallInfo!: string;
 	@Input() packFeatures!: string[];
 	@Input() packPrice!: number;
-}
+	@Input() onSubscribe: (pack: any) => void = () => {}; // Inicializando como uma função vazia
 
-const routes: Routes = [
-    { path: 'login', component: LoginComponent },
-];
+	// Método para assinar
+	subscribe() {
+		const pack = {
+			title: this.cardTitle,
+			price: this.packPrice
+		};
+		this.onSubscribe(pack);
+	}
+}
