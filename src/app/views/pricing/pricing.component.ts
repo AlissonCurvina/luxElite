@@ -4,12 +4,12 @@ import { CommonModule, NgForOf, NgFor } from '@angular/common';
 import { CartService } from '../../services/cart/cart.service';
 import { Router } from '@angular/router';
 
-// Interface para definir o formato do pacote
+//interface para definir o formato do pacote
 interface Package {
     title: string;
     smallInfo: string;
     packFeatures: string[];
-    packPrice: number; // Usando number para consistência
+    packPrice: number; 
 }
 
 @Component({
@@ -17,11 +17,11 @@ interface Package {
     standalone: true,
     imports: [PricingInfoCardComponent, NgForOf, NgFor, CommonModule],
     templateUrl: './pricing.component.html',
-    styleUrls: ['./pricing.component.css'] // Corrigido para styleUrls
+    styleUrls: ['./pricing.component.css'] 
 })
 
 export class PricingComponent {
-    public cardsList: Package[] = [ // Definindo o tipo
+    public cardsList: Package[] = [ //definindo o tipo
         {
             title: 'Básico',
             smallInfo: 'Descubra o mundo do luxo com o nosso pacote básico, criado para oferecer uma experiência exclusiva e sofisticada sem comprometer o bolso',
@@ -30,7 +30,7 @@ export class PricingComponent {
                 '1 peça de roupa de luxo',
                 '1 pet de pequeno porte'
             ],
-            packPrice: 750 // Mantendo como número
+            packPrice: 750 
         },
         {
             title: 'Premium',
@@ -41,7 +41,7 @@ export class PricingComponent {
                 '1 pet de pequeno ou médio porte',
                 'Criação de uma backstore exclusiva (empresário ou investidor)'
             ],
-            packPrice: 1000 // Corrigido para número
+            packPrice: 1000 
         },
         {
             title: 'Elegance',
@@ -53,7 +53,7 @@ export class PricingComponent {
                 '1 joia de grife (menor custo)',
                 'Criação de uma backstore exclusiva (empresário ou investidor)'
             ],
-            packPrice: 3000 // Corrigido para número
+            packPrice: 3000 
         },
         {
             title: 'Diamante',
@@ -66,7 +66,7 @@ export class PricingComponent {
                 '1 sessão de fotos com um carro de luxo (10 fotos)',
                 'Criação de uma backstore exclusiva como herdeiro'
             ],
-            packPrice: 10000 // Corrigido para número
+            packPrice: 10000 
         },
         {
             title: 'Lux Elite',
@@ -79,7 +79,7 @@ export class PricingComponent {
                 '1 sessão de fotos com um carro de luxo (fotos ilimitadas)',
                 'Criação de uma backstore exclusiva como herdeiro'
             ],
-            packPrice: 20000 // Corrigido para número
+            packPrice: 20000 
         },
     ];
 
@@ -87,6 +87,6 @@ export class PricingComponent {
 
     addToCart(pack: Package) {
         this.cartService.addToCart({ title: pack.title, price: pack.packPrice });
-        this.router.navigate(['/checkout']); // Redirecionar para a página de checkout
+        this.router.navigate(['/checkout']); //redirecionar para a página de checkout
     }
 }

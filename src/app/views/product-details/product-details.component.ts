@@ -20,7 +20,7 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.productId = +params['id']; // O '+' converte para número
+      this.productId = +params['id']; //o '+' converte para número
       this.loadProductDetails(this.productId);
     });
   }
@@ -32,6 +32,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart(product: any) {
-    // lógica para adicionar ao carrinho feita futuramente
+    //lógica para adicionar ao carrinho feita futuramente
   }
 }

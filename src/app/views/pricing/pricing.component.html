@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="flex items-center py-5 md:w-1/2 md:pb-20 md:pt-10 md:pr-10">
-        <div class="text-left pl-20"> <!-- Adicionado padding à esquerda -->
+        <div class="text-left pl-20"> 
             <h2 class="text-4xl font-forum text-[#D7A137] sm:text-5xl sm:leading-none md:text-5xl">
                 Descubra a elegância, viva o extraordinário!
             </h2>
@@ -28,7 +28,6 @@
     </h4>
 </div>
 
-<!-- Corrigido: o onSubscribe agora está na linha correta -->
 <app-pricing-info-card
     *ngFor="let card of cardsList"
     [cardTitle]="card.title"

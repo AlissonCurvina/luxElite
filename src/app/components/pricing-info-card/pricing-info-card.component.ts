@@ -7,16 +7,16 @@ import { RouterModule } from '@angular/router';
 	standalone: true,
 	imports: [NgForOf, NgFor, CommonModule, RouterModule],
 	templateUrl: './pricing-info-card.component.html',
-	styleUrls: ['./pricing-info-card.component.css'] // Corrigido de styleUrl para styleUrls
+	styleUrls: ['./pricing-info-card.component.css'] 
 })
 export class PricingInfoCardComponent {
 	@Input() cardTitle!: string;
 	@Input() cardSmallInfo!: string;
 	@Input() packFeatures!: string[];
 	@Input() packPrice!: number;
-	@Input() onSubscribe: (pack: any) => void = () => {}; // Inicializando como uma função vazia
+	@Input() onSubscribe: (pack: any) => void = () => {}; //inicializando como uma função vazia
 
-	// Método para assinar
+	//método para assinar
 	subscribe() {
 		const pack = {
 			title: this.cardTitle,
