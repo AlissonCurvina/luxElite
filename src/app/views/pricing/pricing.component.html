@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="flex items-center py-5 md:w-1/2 md:pb-20 md:pt-10 md:pr-10">
-        <div class="text-left pl-20"> <!-- Adicionado padding à esquerda -->
+        <div class="text-left pl-20"> 
             <h2 class="text-4xl font-forum text-[#D7A137] sm:text-5xl sm:leading-none md:text-5xl">
                 Descubra a elegância, viva o extraordinário!
             </h2>
@@ -19,13 +19,12 @@
 <section class="bg-black mb-0 border-t w-1/2 mx-auto border-[#AD760C]">
 </section>
 
-
 <div class="bg-black"> 
     <h1 class="text-3xl font-forum text-center p-4 text-[#D7A137]">
         Todos os nossos pacotes
     </h1>
     <h4 class="text-center text-dark p-4 text-[#b2ae9b]">
-        Todos os items dos nossos pacotes são escolhidos pelo cliente no momento da assinatura
+        Todos os itens dos nossos pacotes são escolhidos pelo cliente no momento da assinatura
     </h4>
 </div>
 
@@ -35,5 +34,5 @@
     [cardSmallInfo]="card.smallInfo"
     [packFeatures]="card.packFeatures"
     [packPrice]="card.packPrice"
-    [packageId]="card.packageId">
+    [onSubscribe]="addToCart.bind(this, card)">
 </app-pricing-info-card>

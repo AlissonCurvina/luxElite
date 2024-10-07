@@ -1,30 +1,42 @@
-import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { CartService, CartItem } from '../../services/cart/cart.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-checkout',
     standalone: true,
-    imports: [],
+    imports: [CommonModule, FormsModule],
     templateUrl: './checkout.component.html',
-    styleUrl: './checkout.component.css'
+    styleUrls: ['./checkout.component.css']
 })
-
 export class CheckoutComponent implements OnInit {
-    packageId: number = 0;  // Declare packageId como uma propriedade da classe
+    selectedPacks: CartItem[] = []; //usar um array para múltiplos itens
+    selectedPaymentMethod: string = ''; //armazena o método de pagamento selecionado
 
-    constructor(private route: ActivatedRoute) { }
+    constructor(private cartService: CartService) {}
 
     ngOnInit() {
-        this.route.params.subscribe(params => {
-            this.packageId = +params['packageId'];
-            this.loadPackageDetails(this.packageId);
-        });
+        this.selectedPacks = this.cartService.getItems(); //recupera os itens do carrinho
     }
 
-    loadPackageDetails(id: number) {
-        this.packageService.getProductById(id).subscribe(package => {
-            this.package = package;
-        });
+    removeItem(item: CartItem) {
+        // Remove o item do carrinho
+        this.selectedPacks = this.selectedPacks.filter(i => i !== item);
+        this.cartService.clearCart(); //limpa o carrinho
+        this.selectedPacks.forEach(i => this.cartService.addToCart(i)); //re-adiciona os itens restantes ao carrinho
     }
 
+    finalizePurchase() {
+        if (!this.selectedPaymentMethod) {
+            alert('Por favor, escolha um método de pagamento!');
+            return;
+        }
+        
+        //lógica para finalizar a compra
+        alert(`Compra finalizada com sucesso via ${this.selectedPaymentMethod}!`); //exibe o método de pagamento
+        this.cartService.clearCart(); //limpa o carrinho após a compra
+        this.selectedPacks = []; //limpa a lista de itens exibidos
+        this.selectedPaymentMethod = ''; //reseta o método de pagamento
+    }
 }
