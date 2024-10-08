@@ -34,5 +34,5 @@ export const routes: Routes = [
     { path: 'forget-password', component:ForgetPasswordComponent},
     { path: 'search-results', component:SearchResultsComponent},
     { path: 'shopping-cart', component:ShoppingCartComponent },
-    { path: '**', component:HomepageComponent },
+    { path: '**', component:PageNotFoundComponent },
 ];
