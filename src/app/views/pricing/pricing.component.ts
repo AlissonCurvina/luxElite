@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PricingInfoCardComponent } from '../../components/pricing-info-card/pricing-info-card.component';
 import { CommonModule, NgForOf, NgFor } from '@angular/common';
-import { CartService } from '../../services/cart/cart.service';
+import { CartService, CartItem } from '../../services/cart/cart.service';
 import { Router } from '@angular/router';
 
 //interface para definir o formato do pacote
@@ -86,7 +86,15 @@ export class PricingComponent {
     constructor(private cartService: CartService, private router: Router) {}
 
     addToCart(pack: Package) {
-        this.cartService.addToCart({ title: pack.title, price: pack.packPrice });
-        this.router.navigate(['/checkout']); //redirecionar para a página de checkout
+        //passando um id, title, price e quantity 
+        const cartItem: CartItem = {
+            id: this.cardsList.indexOf(pack), 
+            title: pack.title,
+            price: pack.packPrice,
+            quantity: 1 //inicializa com quantidade 1
+        };
+
+        this.cartService.addToCart(cartItem);
+        this.router.navigate(['/checkout']); //redirecionar para o checkout
     }
 }

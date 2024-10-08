@@ -14,7 +14,6 @@ import { CheckoutComponent } from './views/checkout/checkout.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { ForgetPasswordComponent } from './views/forget-password/forget-password.component';
 import { SearchResultsComponent } from './views/search-results/search-results.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 export const routes: Routes = [
     { path: '', component:HomepageComponent },
@@ -33,6 +32,5 @@ export const routes: Routes = [
     { path: 'checkout/:packageId', component: CheckoutComponent },
     { path: 'forget-password', component:ForgetPasswordComponent},
     { path: 'search-results', component:SearchResultsComponent},
-    { path: 'shopping-cart', component:ShoppingCartComponent },
     { path: '**', component:PageNotFoundComponent },
 ];

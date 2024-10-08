@@ -20,11 +20,20 @@ export class CheckoutComponent implements OnInit {
         this.selectedPacks = this.cartService.getItems(); //recupera os itens do carrinho
     }
 
+    // função para calcular a quantidade total de itens
+    getTotalItems(): number {
+        return this.selectedPacks.reduce((total, item) => total + item.quantity, 0); // soma a quantidade de todos os itens
+    }
+
+    // função para calcular o preço total dos itens
+    getTotalPrice(): number {
+        return this.selectedPacks.reduce((total, item) => total + (item.price * item.quantity), 0); // soma o preço total
+    }
+
     removeItem(item: CartItem) {
-        // Remove o item do carrinho
-        this.selectedPacks = this.selectedPacks.filter(i => i !== item);
-        this.cartService.clearCart(); //limpa o carrinho
-        this.selectedPacks.forEach(i => this.cartService.addToCart(i)); //re-adiciona os itens restantes ao carrinho
+        this.selectedPacks = this.selectedPacks.filter(i => i.id !== item.id); // remove o item do carrinho
+        this.cartService.clearCart(); // limpa o carrinho
+        this.selectedPacks.forEach(i => this.cartService.addToCart(i)); // re-adiciona os itens restantes ao carrinho
     }
 
     finalizePurchase() {
@@ -32,11 +41,11 @@ export class CheckoutComponent implements OnInit {
             alert('Por favor, escolha um método de pagamento!');
             return;
         }
-        
-        //lógica para finalizar a compra
-        alert(`Compra finalizada com sucesso via ${this.selectedPaymentMethod}!`); //exibe o método de pagamento
-        this.cartService.clearCart(); //limpa o carrinho após a compra
-        this.selectedPacks = []; //limpa a lista de itens exibidos
-        this.selectedPaymentMethod = ''; //reseta o método de pagamento
+
+        // lógica para finalizar a compra
+        alert(`Compra finalizada com sucesso via ${this.selectedPaymentMethod}!`); // exibe o método de pagamento
+        this.cartService.clearCart(); // limpa o carrinho após a compra
+        this.selectedPacks = []; // limpa a lista de itens exibidos
+        this.selectedPaymentMethod = ''; // reseta o método de pagamento
     }
 }

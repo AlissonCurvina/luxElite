@@ -1,46 +1,47 @@
+// src/models/product-model/product-model.ts
+
 export class ProductModel {
     constructor(
-      public id: number,
-      public name: string,
-      public category: string,
-      public description: string,
-      public photos: string[],
-      public price: number,
-      public includedInPackages: string[],
-      public brand: string
+        private id: number,
+        private name: string,
+        private category: string,
+        private description: string,
+        private photos: string[],
+        private price: number,
+        private includedInPackages: string[],
+        private brand: string
     ) {}
-  
-    //getters para acessar os valores das propriedades
-    public getId(): number {
-      return this.id;
+
+    // Métodos getters para acessar as propriedades
+    getId(): number {
+        return this.id;
     }
-  
-    public getName(): string {
-      return this.name;
+
+    getName(): string {
+        return this.name;
     }
-  
-    public getCategory(): string {
-      return this.category;
+
+    getCategory(): string {
+        return this.category;
     }
-  
-    public getDescription(): string {
-      return this.description;
+
+    getDescription(): string {
+        return this.description;
     }
-  
-    public getPhotos(): string[] {
-      return this.photos;
+
+    getPhotos(): string[] {
+        return this.photos;
     }
-  
-    public getPrice(): number {
-      return this.price;
+
+    getPrice(): number {
+        return this.price;
     }
-  
-    public getIncludedInPackages(): string[] {
-      return this.includedInPackages;
+
+    getIncludedInPackages(): string[] {
+        return this.includedInPackages;
     }
-  
-    public getBrand(): string {
-      return this.brand;
+
+    getBrand(): string {
+        return this.brand;
     }
-  }
-  
+}

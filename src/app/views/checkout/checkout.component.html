@@ -1,12 +1,9 @@
 <div class="bg-cover bg-center h-[20vh] flex justify-center items-center pb-0"
-     style="background-image: url('../../../assets/fundo .jpg');"> 
+     style="background-image: url('../../../assets/fundo\ .jpg');"> 
     <div class="flex flex-col justify-center items-center text-center w-full">
         <h1 class="text-4xl text-[#D7A137] font-cinzel">CHECKOUT</h1>
     </div>
-    <div class="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto bg-white shadow-xl rounded-lg text-gray-900"> <!-- Removido o mt-4 para reduzir a margem superior -->
-    </div>
 </div>
-<!-- fim do fundo de luzes -->
 
 <div class="bg-black p-6 pt-0 min-h-screen flex items-center justify-center">
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-16 w-full max-w-6xl"> 
@@ -40,21 +37,27 @@
 
       <!-- coluna do carrinho de compras (lado direito) -->
       <div class="w-full max-w-2xl bg-black border border-[#4D380F] p-6 rounded-3xl">
-          <h2 class="text-3xl font-forum text-[#D7A137] mb-6">CARRINHO DE COMPRAS</h2>
-
-          <div *ngIf="selectedPacks.length > 0; else emptyCart">
-              <ul class="mb-6">
-                  <li *ngFor="let item of selectedPacks" class="flex justify-between items-center mb-4 p-4 bg-[#21211F] text-white rounded-lg">
-                      <span>{{ item.title }}</span>
-                      <span class="text-[#D7A137]">{{ item.price | currency:'BRL':'symbol' }}</span>
-                      <button (click)="removeItem(item)" class="bg-red-500 text-white px-4 py-1 rounded-2xl">Excluir</button>
-                  </li>
-              </ul>
-          </div>
-
-          <ng-template #emptyCart>
-              <p class="text-gray-300">Seu carrinho está vazio.</p>
-          </ng-template>
-      </div>
+        <h2 class="text-3xl font-forum text-[#D7A137] mb-6">CARRINHO DE COMPRAS</h2>
+    
+        <div *ngIf="selectedPacks.length > 0; else emptyCart">
+            <ul class="mb-6">
+                <li *ngFor="let item of selectedPacks" class="flex justify-between items-center mb-4 p-4 bg-[#21211F] text-white rounded-lg">
+                    <span>{{ item.quantity }}x {{ item.title }}</span> <!-- Exibe a quantidade e o título -->
+                    <span class="text-[#D7A137]">{{ item.price | currency:'BRL':'symbol' }}</span>
+                    <button (click)="removeItem(item)" class="bg-red-500 text-white px-4 py-1 rounded-2xl">Excluir</button>
+                </li>
+            </ul>
+    
+            <!-- Exibe o total de itens e o total do preço -->
+            <div class="text-white">
+                <p>Total itens: <span class="text-[#D7A137]">{{ getTotalItems() }}</span></p>
+                <p>Total preço: <span class="text-[#D7A137]">{{ getTotalPrice() | currency:'BRL':'symbol' }}</span></p>
+            </div>
+        </div>
+    
+        <ng-template #emptyCart>
+            <p class="text-gray-300">Seu carrinho está vazio.</p>
+        </ng-template>
+    </div>    
   </div>
 </div>
