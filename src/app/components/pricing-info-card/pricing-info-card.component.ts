@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 	styleUrls: ['./pricing-info-card.component.css'] 
 })
 export class PricingInfoCardComponent {
+	@Input() packageId!: string;
 	@Input() cardTitle!: string;
 	@Input() cardSmallInfo!: string;
 	@Input() packFeatures!: string[];

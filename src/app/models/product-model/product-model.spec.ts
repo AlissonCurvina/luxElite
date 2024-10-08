@@ -23,3 +23,4 @@ describe('ProductModel', () => {
     expect(product.getBrand()).toBe('Chanel');
   });
 });
+ */
