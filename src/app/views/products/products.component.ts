@@ -382,7 +382,6 @@ export class ProductsComponent implements OnInit {
 			const searchTerm = params['search'];
 			this.filterProducts(searchTerm); // Chama o filtro com o termo de busca
 		});
-		this.filterProducts(); // Para filtrar por marcas e categorias
 	}
 
 	public toggleBrand(brand: string) {

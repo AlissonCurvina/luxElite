@@ -1,8 +1,8 @@
-<div class="bg-black mt-0 grid gap-8 sm:grid-cols-1 lg:grid-cols-1 p-4 md:p-8">
+<div class="bg-black mt-0 p-4 md:p-8">
   <!-- Produtos e Filtros -->
-  <div class="flex flex-col lg:flex-row w-full">
+  <div class="flex w-full">
     <!-- Seção de Produtos -->
-    <div class="p-8 py-8 sm:p-5 bg-opacity-50 shadow-2xl flex flex-col items-center lg:w-2/3"> 
+    <div class="p-8 py-8 sm:p-5 bg-opacity-50 shadow-2xl flex flex-col items-center w-2/3 h-[1000px] overflow-y-auto no-scrollbar"> 
       <div class="space-y-12 w-full">
         <div class="space-y-4 text-center w-full">
           <h3 class="text-5xl text-[#D7A137] font-forum">Produtos</h3>
@@ -21,7 +21,7 @@
             [price]="product.getPrice()"
             [brand]="product.getBrand()"
             [includedInPackages]="product.getIncludedInPackages()"
-            (detailsClick)="viewProductDetails($event)"> 
+            (detailsClick)="viewProductDetails($event)">
           </app-product-info-card>
         </div>
       </ng-container>
@@ -32,7 +32,7 @@
     </div>
 
     <!-- Filtros à direita -->
-    <div class="p-8 bg-black lg:w-1/3">
+    <div class="p-8 bg-black w-1/3">
       <h1 class="text-3xl text-[#D7A137] mb-6 text-center font-forum">Filtrar por Marca</h1>
       <div class="flex flex-col items-start gap-4 mb-6">
         <label *ngFor="let brand of availableBrands" class="text-white flex items-center space-x-2">
