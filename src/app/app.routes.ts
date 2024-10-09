@@ -13,7 +13,6 @@ import { ProductDetailsComponent } from './views/product-details/product-details
 import { CheckoutComponent } from './views/checkout/checkout.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { ForgetPasswordComponent } from './views/forget-password/forget-password.component';
-import { SearchResultsComponent } from './views/search-results/search-results.component';
 
 export const routes: Routes = [
     { path: '', component:HomepageComponent },
@@ -31,6 +30,5 @@ export const routes: Routes = [
     { path: 'checkout', component:CheckoutComponent },
     { path: 'checkout/:packageId', component: CheckoutComponent },
     { path: 'forget-password', component:ForgetPasswordComponent},
-    { path: 'search-results', component:SearchResultsComponent},
     { path: '**', component:PageNotFoundComponent },
 ];
