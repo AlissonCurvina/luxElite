@@ -6,17 +6,17 @@
             
             <div class="mt-4">
                 <label class="block text-yellow-400 text-sm font-bold mb-2">Email</label>
-                <input class="bg-zinc-950 text-yellow-400 focus:outline-none focus:shadow-outline border border-yellow-400 rounded-full py-2 px-4 block w-full appearance-none" type="email" />
+                <input [(ngModel)]="email" class="bg-zinc-950 text-yellow-400 focus:outline-none focus:shadow-outline border border-yellow-400 rounded-full py-2 px-4 block w-full appearance-none" type="email" />
             </div>
             <div class="mt-4">
                 <div class="flex justify-between">
                     <label class="block text-yellow-400 text-sm font-bold mb-2">Senha</label>
                 </div>
-                <input class="bg-zinc-950 text-yellow-400 focus:outline-none focus:shadow-outline border border-yellow-400 rounded-full py-2 px-4 block w-full appearance-none" type="password" />
+                <input [(ngModel)]="password" class="bg-zinc-950 text-yellow-400 focus:outline-none focus:shadow-outline border border-yellow-400 rounded-full py-2 px-4 block w-full appearance-none" type="password" />
             </div>
             <div class="flex justify-between pt-4">
                 <div class="flex items-center">
-                    <p href="#" class="text-xs text-gray-500">Lembrar usuário</p>
+                    <p class="text-xs text-gray-500">Lembrar usuário</p>
                     <input class="ml-2" type="radio" name="" id="">
                 </div>
                 <a routerLink="/forget-password" class="text-xs text-gray-500">Esqueceu sua senha?</a>      
@@ -29,6 +29,11 @@
             <!-- mensagem de sucesso -->
             <div *ngIf="successMessage" class="mt-4 text-green-400 font-semibold">
                 {{ successMessage }}
+            </div>
+
+            <!-- mensagem de erro -->
+            <div *ngIf="errorMessage" class="mt-4 text-red-400 font-semibold">
+                {{ errorMessage }}
             </div>
 
             <div class="mt-4 flex items-center justify-between">
