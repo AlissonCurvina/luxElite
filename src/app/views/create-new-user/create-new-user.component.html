@@ -1,184 +1,172 @@
 <h1 class="bg-black font-forum text-3xl text-center text-yellow-500 mt-1">
-    Criar conta
+  Cadastro
 </h1>
 <div class="bg-black">
-  <div class="flex items-center justify-center p-4">
-    <div class="mx-auto w-full max-w-[550px] bg-dark">
-      <form class="m-4" (ngSubmit)="onCreate()">
-        <div class="-mx-3 flex flex-wrap">
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <label for="name" class="mb-3 block text-base font-medium text-yellow-400">
-                Nome
-              </label>
-              <input 
-                type="text" 
-                name="name" 
-                [(ngModel)]="name"
-                class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
-            </div>
-          </div>
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <label for="lastname" class="mb-3 block text-base font-medium text-yellow-400">
-                Sobrenome
-              </label>
-              <input 
-                type="text" 
-                name="lastname" 
-                [(ngModel)]="lastname"
-                class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
-            </div>
+<div class="flex items-center justify-center p-4">
+  <div class="mx-auto w-full max-w-[550px] bg-dark">
+    <form class="m-4" (ngSubmit)="gravar()">
+      <div class="-mx-3 flex flex-wrap">
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <label for="name" class="mb-3 block text-base font-medium text-yellow-400">
+              Nome
+            </label>
+            <input 
+              type="text" 
+              [(ngModel)]="obj.name" 
+              name="name"
+              class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
           </div>
         </div>
-        <div class="-mx-3 flex flex-wrap">
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <label for="cpf" class="mb-3 block text-base font-medium text-yellow-400">
-                CPF
-              </label>
-              <input 
-                type="text" 
-                name="cpf" 
-                [(ngModel)]="cpf"
-                class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
-            </div>
-          </div>
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <label for="cellphone" class="mb-3 block text-base font-medium text-yellow-400">
-                Telefone
-              </label>
-              <input 
-                type="text" 
-                name="cellphone" 
-                [(ngModel)]="cellphone"
-                class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
-            </div>
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <label for="lastname" class="mb-3 block text-base font-medium text-yellow-400">
+              Sobrenome
+            </label>
+            <input 
+              type="text" 
+              [(ngModel)]="obj.lastname" 
+              name="lastname"
+              class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
           </div>
         </div>
-        <div class="mb-5">
-          <label for="email" class="mb-3 block text-base font-medium text-yellow-400">
-            Email
-          </label>
-          <input 
-            type="email" 
-            name="email" 
-            [(ngModel)]="email"
-            placeholder="exemplo@exemplo.com.br"
-            class="placeholder:text-yellow-400 border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
-        </div>
-        <div class="-mx-3 flex flex-wrap">
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <label for="password" class="mb-3 block text-base font-medium text-yellow-400">
-                Senha
-              </label>
-              <input 
-                type="password" 
-                name="password" 
-                [(ngModel)]="password"
-                class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
-            </div>
-          </div>
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <label for="password2" class="mb-3 block text-base font-medium text-yellow-400">
-                Repita a senha
-              </label>
-              <input 
-                type="password" 
-                name="password2" 
-                [(ngModel)]="password2"
-                class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
-            </div>
+      </div>
+      <div class="-mx-3 flex flex-wrap">
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <label for="cpf" class="mb-3 block text-base font-medium text-yellow-400">
+              CPF
+            </label>
+            <input 
+              type="text" 
+              [(ngModel)]="obj.cpf" 
+              name="cpf"
+              class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
           </div>
         </div>
-        <label class="mb-5 block text-base font-semibold text-yellow-300 sm:text-xl">
-          Dados do endereço
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <label for="cellphone" class="mb-3 block text-base font-medium text-yellow-400">
+              Telefone
+            </label>
+            <input 
+              type="text" 
+              [(ngModel)]="obj.cellphone" 
+              name="cellphone"
+              class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
+          </div>
+        </div>
+      </div>
+      <div class="mb-5">
+        <label for="email" class="mb-3 block text-base font-medium text-yellow-400">
+          Email
         </label>
-        <div class="-mx-3 flex flex-wrap">
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <label for="cep" class="mb-3 block text-base font-medium text-yellow-400">
-                CEP
-              </label>
-              <input 
-                type="text" 
-                name="cep" 
-                [(ngModel)]="cep"
-                class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
-            </div>
-          </div>
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <label for="street_name" class="mb-3 block text-base font-medium text-yellow-400">
-                Logradouro
-              </label>
-              <input 
-                type="text" 
-                name="street_name" 
-                [(ngModel)]="street_name"
-                class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
-            </div>
+        <input 
+          type="email" 
+          [(ngModel)]="obj.email" 
+          name="email"
+          class="placeholder:text-yellow-400 border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
+      </div>
+      <div class="-mx-3 flex flex-wrap">
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <label for="password" class="mb-3 block text-base font-medium text-yellow-400">
+              Senha
+            </label>
+            <input 
+              type="password" 
+              [(ngModel)]="obj.password" 
+              name="password"
+              class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
           </div>
         </div>
-        <div class="-mx-3 flex flex-wrap">
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <label for="state" class="mb-3 block text-base font-medium text-yellow-400">
-                Estado
-              </label>
-              <input 
-                type="text" 
-                name="state" 
-                [(ngModel)]="state"
-                class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
-            </div>
-          </div>
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <label for="city" class="mb-3 block text-base font-medium text-yellow-400">
-                Cidade
-              </label>
-              <input 
-                type="text" 
-                name="city" 
-                [(ngModel)]="city"
-                class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
-            </div>
-          </div>
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <label for="additional_info" class="mb-3 block text-base font-medium text-yellow-400">
-                Complemento
-              </label>
-              <input 
-                type="text" 
-                name="additional_info" 
-                [(ngModel)]="additional_info"
-                class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
-            </div>
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <label for="password2" class="mb-3 block text-base font-medium text-yellow-400">
+              Repita a senha
+            </label>
+            <input 
+              type="password" 
+              [(ngModel)]="obj.password2" 
+              name="password2"
+              class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
           </div>
         </div>
-        <div>
-          <button
-            type="submit"
-            class="px-5 py-1 mt-2 min-w-full border transition-colors border-transparent text-base font-thin rounded-full text-dark bg-yellow-400 hover:bg-yellow-500">
-            Criar conta
-          </button>
-
-          <!-- Mensagem de erro -->
-          <div *ngIf="errorMessage" class="mt-4 text-red-400 font-semibold">
-            {{ errorMessage }}
-          </div>
-
-          <!-- Mensagem de sucesso -->
-          <div *ngIf="successMessage" class="mt-4 text-green-400 font-semibold">
-            {{ successMessage }}
+      </div>
+      <label class="mb-5 block text-base font-semibold text-yellow-300 sm:text-xl">
+        Dados do endereço
+      </label>
+      <div class="-mx-3 flex flex-wrap">
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <label for="cep" class="mb-3 block text-base font-medium text-yellow-400">
+              CEP
+            </label>
+            <input 
+              type="text" 
+              [(ngModel)]="obj.cep" 
+              name="cep"
+              class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
           </div>
         </div>
-      </form>
-    </div>
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <label for="street_name" class="mb-3 block text-base font-medium text-yellow-400">
+              Logradouro
+            </label>
+            <input 
+              type="text" 
+              [(ngModel)]="obj.street_name" 
+              name="street_name"
+              class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
+          </div>
+        </div>
+      </div>
+      <div class="-mx-3 flex flex-wrap">
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <label for="state" class="mb-3 block text-base font-medium text-yellow-400">
+              Estado
+            </label>
+            <input 
+              type="text" 
+              [(ngModel)]="obj.state" 
+              name="state"
+              class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
+          </div>
+        </div>
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <label for="city" class="mb-3 block text-base font-medium text-yellow-400">
+              Cidade
+            </label>
+            <input 
+              type="text" 
+              [(ngModel)]="obj.city" 
+              name="city"
+              class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
+          </div>
+        </div>
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <label for="additional_info" class="mb-3 block text-base font-medium text-yellow-400">
+              Complemento
+            </label>
+            <input 
+              type="text" 
+              [(ngModel)]="obj.additional_info" 
+              name="additional_info"
+              class="border-yellow-400 text-yellow-400 transition rounded-full bg-zinc-950 w-full border py-1 px-6 text-base focus:border-yellow-200 focus:shadow-md" />
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-around mt-4">
+        <button (click)="gravar()" type="button" class="px-4 py-2 border text-yellow-400 bg-transparent border-yellow-400 rounded-full hover:bg-yellow-400 hover:text-black">Gravar</button>
+        <button (click)="pesquisar()" type="button" class="px-4 py-2 border text-yellow-400 bg-transparent border-yellow-400 rounded-full hover:bg-yellow-400 hover:text-black">Pesquisar</button>
+        <button (click)="alterar()" type="button" class="px-4 py-2 border text-yellow-400 bg-transparent border-yellow-400 rounded-full hover:bg-yellow-400 hover:text-black">Alterar</button>
+        <button (click)="remover()" type="button" class="px-4 py-2 border text-yellow-400 bg-transparent border-yellow-400 rounded-full hover:bg-yellow-400 hover:text-black">Remover</button>
+      </div>
+    </form>
   </div>
+</div>
 </div>
