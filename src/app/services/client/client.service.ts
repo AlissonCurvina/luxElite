@@ -11,20 +11,15 @@ export class ClientService {
 
   constructor(private http : HttpClient) {}
 
-  Inserir(obj: Client) : string {
-    let message = "";
-    this.http.post("http://localhost:8081/api/cliente", obj)
-    .subscribe(
-      {
-        next:(data) => {
-          message = "Cliente cadastrado com sucesso!";
-        },
-        error:(err) => {
-          message = "Ocorreu um erro!";
-        }
-      }
-    );
-    return message;
+  gravar(obj: Client) : Observable<Object> {
+    return this.http.post("http://localhost:8081/api/cliente", obj)
 
+  }
+  alterar(obj: Client) : Observable<Object> {
+    return this.http.put("http://localhost:8081/api/cliente", obj);
+  }
+
+  pesquisar(cpf: string) : Observable<any> {
+    return this.http.get("http://localhost:8081/api/cliente/"+ cpf);
   }
 }

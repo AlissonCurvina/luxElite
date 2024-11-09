@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Client } from '../../models/client-model/client';
 import { ClientService } from '../../services/client/client.service';
+import { subscribe } from 'diagnostics_channel';
 
 @Component({
   selector: 'app-create-new-user',
@@ -17,11 +18,31 @@ export class CreateNewUserComponent {
   
   constructor(private service: ClientService){}
   gravar(){
-    this.message = this.service.Inserir(this.obj);
+    this.service.gravar(this.obj).subscribe({ //mensagem nao aparece
+      next: (data) => {this.message="Cliente inserido!"}, //ver pq no banco grava só algumas coisas e faltam outras
+      error:(err) => {this.message="Ocorreu um problema, tente mais tarde!"}
+    });
   }
-  alterar(){}
+  alterar(){
+    this.service.alterar(this.obj).subscribe({ //não esta alterando e sim criando um novo, arrumar tambem
+      next: (data) => {this.message="Registro alterado com sucesso!"},
+      error:(err) => {this.message="Ocorreu um problema, tente mais tarde!"}
+    });
+  }
   remover(){}
-  pesquisar(){}
+
+  pesquisar() {
+    this.service.pesquisar(this.obj.cpf).subscribe({  //ver pq pesquisar não esta funcionando
+      next: (data) => {
+        this.obj= data;
+        if(this.obj.name==""){
+          this.message = "registro não encontrado!";
+        }else{
+          this.message = "";
+        }},
+      error:(err) => {this.message="Ocorreu um problema, tente mais tarde!"}
+    })
+  }
 
   // successMessage: string | null = null; //tirar depois ou arrumar
   // errorMessage: string | null = null;
