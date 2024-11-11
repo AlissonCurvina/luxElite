@@ -15,11 +15,13 @@ export class ClientService {
     return this.http.post("http://localhost:8081/api/cliente", obj)
 
   }
-  alterar(obj: Client) : Observable<Object> {
-    return this.http.put("http://localhost:8081/api/cliente", obj);
-  }
+  alterar(obj: Client): Observable<Object> {
+    return this.http.put(`http://localhost:8081/api/cliente/${obj.cpf}`, obj);
+  }    
 
-  pesquisar(cpf: string) : Observable<any> {
-    return this.http.get("http://localhost:8081/api/cliente/"+ cpf);
-  }
+  pesquisar(cpf: string): Observable<Client> {
+    return this.http.get<Client>(`http://localhost:8081/api/cliente/${cpf}`);
+  }  
+  
+  
 }
