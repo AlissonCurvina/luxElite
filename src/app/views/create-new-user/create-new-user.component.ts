@@ -18,6 +18,8 @@ export class CreateNewUserComponent {
   
   constructor(private service: ClientService){}
 
+  //sugestão: colocar mensagem "cliente cadastrado com sucesso" e validar os campos preenchidos
+
   gravar() { //completo
     console.log("Dados antes de enviar:", this.obj);
     this.service.gravar(this.obj).subscribe({
@@ -32,7 +34,7 @@ export class CreateNewUserComponent {
     });
   }  
 
-  alterar() { //incompleto, deu erro de cors
+  alterar() { //completo
     if (!this.obj.cpf) {
       this.message = "Por favor, insira um CPF válido.";
       return;
@@ -40,17 +42,22 @@ export class CreateNewUserComponent {
   
     console.log("Alterando cliente:", this.obj);
   
-    this.service.alterar(this.obj).subscribe({
+    this.service.alterar(this.obj.cpf, this.obj).subscribe({
       next: (data) => {
-        this.message = "Cliente alterado com sucesso!";
-        console.log("Resposta do backend:", data);
+        this.message = data;
+        console.log("Cliente atualizado:", data);
       },
       error: (err) => {
-        this.message = "Ocorreu um problema, tente mais tarde!";
+        if (err.status === 404) {
+          this.message = "Cliente não encontrado!";
+        } else {
+          this.message = "Ocorreu um problema ao atualizar, tente mais tarde!";
+        }
         console.error("Erro ao alterar:", err);
       }
     });
   }
+  
   
   pesquisar() { //completo
     if (!this.obj.cpf) {
@@ -76,7 +83,31 @@ export class CreateNewUserComponent {
     });
   }
 
-  remover(){} //pendente
+  remover() { //completo
+    if (!this.obj.cpf) {
+      this.message = "Por favor, insira um CPF válido.";
+      return;
+    }
+  
+    if (!confirm("Tem certeza que deseja remover este cliente?")) {
+      return;
+    }
+  
+    console.log("Removendo cliente com CPF:", this.obj.cpf);
+  
+    this.service.remover(this.obj.cpf).subscribe({
+      next: () => {
+        this.message = "Cliente removido com sucesso!";
+        console.log("Cliente removido.");
+        this.obj = new Client();
+      },
+      error: (err) => {
+        this.message = "Ocorreu um problema ao remover, tente mais tarde!";
+        console.error("Erro ao remover:", err);
+      }
+    });
+  }
+  
   
     
 }
