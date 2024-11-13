@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError, Observable, throwError } from 'rxjs';
 import { Client } from '../../models/client-model/client';
-import { error } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +9,7 @@ import { error } from 'console';
 export class ClientService {
 
   constructor(private http : HttpClient) {}
+  private apiUrl = 'http://localhost:8081/api';
 
   gravar(obj: Client) : Observable<Object> {
     return this.http.post("http://localhost:8081/api/cliente", obj)
@@ -26,6 +26,17 @@ export class ClientService {
   remover(cpf: string) {
     return this.http.delete(`http://localhost:8081/api/cliente/${cpf}`);
   }
+
+  login(email: string, password: string) {
+    console.log("Enviando dados para o back-end:", { email, password });
   
+    return this.http.post<Client>(`${this.apiUrl}/cliente/login`, { email, password }).pipe(
+      catchError((err) => {
+        console.error("Erro ao fazer requisição ao back-end:", err);
+        throw err;
+      })
+    );
+  }  
   
 }
+

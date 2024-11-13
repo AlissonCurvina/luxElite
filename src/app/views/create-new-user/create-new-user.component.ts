@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Client } from '../../models/client-model/client';
 import { ClientService } from '../../services/client/client.service';
-import { subscribe } from 'diagnostics_channel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-new-user',
@@ -12,13 +12,25 @@ import { subscribe } from 'diagnostics_channel';
   templateUrl: './create-new-user.component.html',
   styleUrl: './create-new-user.component.css'
 })
+
+//sugestão: colocar mensagem "cliente cadastrado com sucesso" e validar os campos preenchidos"
+//sugestão: validar a gravação, só gravar se o cpf ainda n existir
+
 export class CreateNewUserComponent {
   message: string = '';
   obj: Client = new Client();
+  clientData: Client | null = null;
   
-  constructor(private service: ClientService){}
-
-  //sugestão: colocar mensagem "cliente cadastrado com sucesso" e validar os campos preenchidos
+  constructor(private service: ClientService, private router: Router){
+    const navigation = this.router.getCurrentNavigation();
+    const state = navigation?.extras?.state as { clientData: Client };
+  
+    if (state?.clientData) {
+      this.obj = state.clientData;
+    } else {
+      this.message = "Dados do cliente não encontrados. Faça o login novamente.";
+    }
+  }
 
   gravar() { //completo
     console.log("Dados antes de enviar:", this.obj);
