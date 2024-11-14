@@ -42,8 +42,8 @@
         <div *ngIf="selectedPacks.length > 0; else emptyCart">
             <ul class="mb-6">
                 <li *ngFor="let item of selectedPacks" class="flex justify-between items-center mb-4 p-4 bg-[#21211F] text-white rounded-lg">
-                    <span>{{ item.quantity }}x {{ item.title }}</span> <!-- Exibe a quantidade e o título -->
-                    <span class="text-[#D7A137]">{{ item.price | currency:'BRL':'symbol' }}</span>
+                    <span>{{ item.quantidade }}x {{ item.nome }}</span> <!-- Exibe a quantidade e o título -->
+                    <span class="text-[#D7A137]">{{ item.preco| currency:'BRL':'symbol' }}</span>
                     <button (click)="removeItem(item)" class="bg-red-500 text-white px-4 py-1 rounded-2xl">Excluir</button>
                 </li>
             </ul>

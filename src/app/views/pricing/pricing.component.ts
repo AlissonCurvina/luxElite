@@ -86,15 +86,14 @@ export class PricingComponent {
     constructor(private cartService: CartService, private router: Router) {}
 
     addToCart(pack: Package) {
-        //passando um id, title, price e quantity 
         const cartItem: CartItem = {
-            id: this.cardsList.indexOf(pack), 
-            title: pack.title,
-            price: pack.packPrice,
-            quantity: 1 //inicializa com quantidade 1
+            id: this.cardsList.indexOf(pack),  //encontrar o índice do pacote na lista
+            nome: pack.title,                 
+            preco: pack.packPrice,             
+            quantidade: 1                   
         };
-
+    
         this.cartService.addToCart(cartItem);
-        this.router.navigate(['/checkout']); //redirecionar para o checkout
+        this.router.navigate(['/checkout']);
     }
 }

@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 
 //sugestão: colocar mensagem "cliente cadastrado com sucesso" e validar os campos preenchidos"
 //sugestão: validar a gravação, só gravar se o cpf ainda n existir
+//gerar dados de endereço
 
 export class CreateNewUserComponent {
   message: string = '';

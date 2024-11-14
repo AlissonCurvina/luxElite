@@ -1,51 +1,63 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService, CartItem } from '../../services/cart/cart.service';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common'; 
+import { FormsModule } from '@angular/forms'; 
 
 @Component({
-    selector: 'app-checkout',
-    standalone: true,
-    imports: [CommonModule, FormsModule],
-    templateUrl: './checkout.component.html',
-    styleUrls: ['./checkout.component.css']
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.css'],
+  standalone: true, 
+  imports: [
+    CommonModule, 
+    FormsModule,  
+  ],
 })
 export class CheckoutComponent implements OnInit {
-    selectedPacks: CartItem[] = []; //usar um array para múltiplos itens
-    selectedPaymentMethod: string = ''; //armazena o método de pagamento selecionado
+  selectedPacks: CartItem[] = [];
+  selectedPaymentMethod: string = '';
 
-    constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService) {}
 
-    ngOnInit() {
-        this.selectedPacks = this.cartService.getItems(); //recupera os itens do carrinho
+  ngOnInit() {
+    this.selectedPacks = this.cartService.getItems();
+  }
+
+  finalizePurchase() {
+    if (!this.selectedPaymentMethod) {
+      alert('Por favor, escolha um método de pagamento!');
+      return;
     }
 
-    // função para calcular a quantidade total de itens
-    getTotalItems(): number {
-        return this.selectedPacks.reduce((total, item) => total + item.quantity, 0); // soma a quantidade de todos os itens
-    }
+    this.cartService.finalizePurchase().subscribe(
+      (response) => {
+        alert(`Compra finalizada com sucesso! Número do pedido: ${response.numeroPedido}`);
+        this.cartService.clearCart();
+        this.selectedPacks = [];
+        this.selectedPaymentMethod = '';
+      },
+      (error) => {
+        alert('Erro ao finalizar a compra. Tente novamente.');
+        console.error(error);
+      }
+    );
+  }
 
-    // função para calcular o preço total dos itens
-    getTotalPrice(): number {
-        return this.selectedPacks.reduce((total, item) => total + (item.price * item.quantity), 0); // soma o preço total
-    }
 
     removeItem(item: CartItem) {
-        this.selectedPacks = this.selectedPacks.filter(i => i.id !== item.id); // remove o item do carrinho
-        this.cartService.clearCart(); // limpa o carrinho
-        this.selectedPacks.forEach(i => this.cartService.addToCart(i)); // re-adiciona os itens restantes ao carrinho
-    }
+    this.selectedPacks = this.selectedPacks.filter(p => p.id !== item.id);
+    this.cartService.clearCart();
+    this.selectedPacks.forEach(i => this.cartService.addToCart(i));
+  }
 
-    finalizePurchase() {
-        if (!this.selectedPaymentMethod) {
-            alert('Por favor, escolha um método de pagamento!');
-            return;
-        }
 
-        // lógica para finalizar a compra
-        alert(`Compra finalizada com sucesso via ${this.selectedPaymentMethod}!`); // exibe o método de pagamento
-        this.cartService.clearCart(); // limpa o carrinho após a compra
-        this.selectedPacks = []; // limpa a lista de itens exibidos
-        this.selectedPaymentMethod = ''; // reseta o método de pagamento
-    }
+  //calcula o total de itens no carrinho
+  getTotalItems(): number {
+    return this.selectedPacks.reduce((total, item) => total + item.quantidade, 0);
+  }
+  //calcula o valor total no carrinho
+  getTotalPrice(): number {
+    return this.selectedPacks.reduce((total, item) => total + item.preco * item.quantidade, 0);
+  }
+  
 }
