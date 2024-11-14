@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // import FormsModule para o [(ngModel)]
+import { FormsModule } from '@angular/forms';
+import { ClientService } from '../../services/client/client.service';
 
 @Component({
   selector: 'app-forget-password',
@@ -11,18 +12,35 @@ import { FormsModule } from '@angular/forms'; // import FormsModule para o [(ngM
 })
 export class ForgetPasswordComponent {
 
-  email: string = ''; // variável para armazenar o email inserido
-  successMessage: string | null = null; // variável para armazenar a mensagem de sucesso
+  email: string = ''; 
+  successMessage: string | null = null; 
+  errorMessage: string | null = null;   
 
-  // função chamada ao clicar em "Enviar Link"
-  onSendLink() {
-    if (this.email) { 
-      // simulação do envio do email e exibição da mensagem de sucesso
-      this.successMessage = 'Email enviado com sucesso!';
-    } else {
-      this.successMessage = 'Por favor, insira um email válido.';
+  //email identificado na api e exibição da mensagem de recuperação de senha ok
+
+  constructor(private clientService: ClientService) {}
+
+
+  onRecoverPassword() {
+    if (!this.email) {
+      this.errorMessage = 'Por favor, insira um e-mail válido';
+      return;
     }
-
-    // adicionar a lógica real de envio de link para recuperação de senha
+  
+    this.clientService.recoverPassword(this.email).subscribe({
+      next: (response: any) => {
+        this.successMessage = response.message; 
+        this.errorMessage = null;
+      },
+      error: (err) => {
+        if (err.status === 404) {
+          this.errorMessage = 'E-mail não encontrado';
+        } else {
+          this.errorMessage = 'Erro ao solicitar recuperação de senha. Tente novamente mais tarde.';
+        }
+        this.successMessage = null;
+      }
+    });
   }
+  
 }

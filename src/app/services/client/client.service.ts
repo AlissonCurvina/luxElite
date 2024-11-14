@@ -38,5 +38,15 @@ export class ClientService {
     );
   }  
   
+  recoverPassword(email: string) {
+    return this.http.post<string>(`${this.apiUrl}/cliente/recupera`, { email }).pipe(
+      catchError((err) => {
+        console.error("Erro ao solicitar recuperação de senha:", err);
+        throw err; 
+      })
+    );
+  }
+  
+  
 }
 
