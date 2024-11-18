@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule, NgForOf, NgFor } from '@angular/common';
-import { EventEmitter, Output } from '@angular/core'
+import { EventEmitter, Output } from '@angular/core';
+
 @Component({
   selector: 'app-product-info-card',
   standalone: true,
@@ -8,12 +9,13 @@ import { EventEmitter, Output } from '@angular/core'
   templateUrl: './product-info-card.component.html',
   styleUrl: './product-info-card.component.css'
 })
+
 export class ProductInfoCardComponent {
   @Input() id!: number;
   @Input() name!: string;
 	@Input() description!: string;
   @Input() category!: string;
-	@Input() photos!: string[];
+	@Input() photos!: string;
 	@Input() price!: number;
   @Input() includedInPackages!: string[];
   @Input() brand!: string;
