@@ -43,7 +43,7 @@ export class ProductsComponent implements OnInit {
 				product.nome,
 				product.categoria,
 				product.descricao,
-				product.photos,
+				product.foto_url,
 				product.preco,
 				product.listaPacotes,
 				product.marca

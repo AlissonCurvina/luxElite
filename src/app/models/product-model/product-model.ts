@@ -6,7 +6,7 @@ export class ProductModel {
         private name: string,
         private category: string,
         private description: string,
-        private photos: string,
+        private foto_url: string,
         private price: number,
         private includedInPackages: string[],
         private brand: string
@@ -29,8 +29,8 @@ export class ProductModel {
         return this.description;
     }
 
-    getPhotos(): string {
-        return this.photos;
+    getfoto_url(): string {
+        return this.foto_url;
     }
 
     getPrice(): number {

@@ -15,7 +15,7 @@ export class ProductInfoCardComponent {
   @Input() name!: string;
 	@Input() description!: string;
   @Input() category!: string;
-	@Input() photos!: string;
+	@Input() foto_url!: string;
 	@Input() price!: number;
   @Input() includedInPackages!: string[];
   @Input() brand!: string;
