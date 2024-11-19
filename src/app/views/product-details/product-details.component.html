@@ -8,7 +8,7 @@
     <div class="flex flex-col md:flex-row -mx-4">
       <div class="md:flex-1 px-4">
         <div class="h-[460px] rounded-xl border-2 border-[#b2ae9b] mb-4">
-          <img class="w-full h-full object-cover rounded-lg" [src]="product.photos" alt="{{ product.name }}" />
+          <img class="w-full h-full object-cover rounded-lg" [src]="product.foto_url" alt="{{ product.name }}" />
         </div>
         <div class="flex -mx-2 mb-4">
           <div class="w-1/2 px-2">
@@ -19,22 +19,22 @@
         </div>
       </div>
       <div class="md:flex-1 px-4">
-        <h2 class="text-3xl font-cinzel font-bold text-[#D7A137] mb-2">{{ product.name }}</h2>
-        <p class="font-forum text-white text-2xl mb-4">{{ product.description }}</p>
+        <h2 class="text-3xl font-cinzel font-bold text-[#D7A137] mb-2">{{ product.nome }}</h2>
+        <p class="font-forum text-white text-2xl mb-4">{{ product.descricao }}</p>
         <div class="flex mb-8">
           <div class="mr-8 text-xl">
             <span class="font-cinzel font-bold text-[#b2ae9b]">Preço: </span>
-            <span class="text-[#D7A137] font-forum">R$ {{ product.price | number: '1.2-2' }}</span>
+            <span class="text-[#D7A137] font-forum">R$ {{ product.preco | number: '1.2-2' }}</span>
           </div>
           <div class="text-xl">
             <span class="font-cinzel font-bold text-[#b2ae9b]">Categoria: </span>
-            <span class="text-[#D7A137] font-forum">{{ product.category }}</span>
+            <span class="text-[#D7A137] font-forum">{{ product.categoria }}</span>
           </div>
         </div>
         <div class="mb-8 mt-10 text-xl">
           <span class="font-cinzel text-[#D7A137] font-bold">Incluso no pacote:</span>
           <ul class="font-forum  text-2xl list-disc ml-4 mt-2 text-white">
-            {{ product.includedInPackages }}
+            {{ product.listaPacotes }}
           </ul>
         </div>
       </div>
