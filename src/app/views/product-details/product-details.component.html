@@ -2,7 +2,6 @@
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <h1 class="text-4xl flex justify-center font-forum text-[#D7A137] mb-2">Detalhes do Produto</h1>
     
-    <!-- Travessão (Linha) abaixo do título -->
     <hr class="border-t-2 border-[#b2ae9b] mb-10 w-1/2 mx-auto">
 
     <div class="flex flex-col md:flex-row -mx-4">
@@ -12,7 +11,9 @@
         </div>
         <div class="flex -mx-2 mb-4">
           <div class="w-1/2 px-2">
-            <button routerLink="/pricing" class="w-full bg-[#D7A137] font-forum font-bold text-black border-2 border-[#D7A137] py-2 px-4 rounded-full hover:bg-[#8f6a43]">
+            <button 
+              routerLink="/pricing" 
+              (click)="addToCart(product.id)" class="w-full bg-[#D7A137] font-forum font-bold text-black border-2 border-[#D7A137] py-2 px-4 rounded-full hover:bg-[#8f6a43]">
               Selecionar pacote incluso
             </button>
           </div>

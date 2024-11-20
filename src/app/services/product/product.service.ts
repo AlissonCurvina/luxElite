@@ -15,12 +15,15 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   getAllProducts(): Observable<ProductModel[]> {
-    console.log(this.http.get<ProductModel[]>("http://localhost:8081/api/produtos/"))
 
     return this.http.get<ProductModel[]>("http://localhost:8081/api/produtos/"); // Retorna um Observable com a lista de produtos
   }
 
   getProductById(id: number): Observable<ProductModel> {
-    return this.http.get<ProductModel>(`${this.apiUrl}/${id}`); // Retorna um Observable com o produto
+    return this.http.get<ProductModel>(`${this.apiUrl}/${id}`);
+  }
+
+  getPackageByProductId(productId: number): Observable<{ id: number; nome: string; preco: number }> {
+    return this.http.get<{ id: number; nome: string; preco: number }>(`${this.apiUrl}/${productId}/pacote-ids`);
   }
 }

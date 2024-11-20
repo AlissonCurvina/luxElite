@@ -1,4 +1,5 @@
 // src/models/product-model/product-model.ts
+import { PackageModel } from "../package-model/package-model";
 
 export class ProductModel {
     constructor(

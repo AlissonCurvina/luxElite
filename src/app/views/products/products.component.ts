@@ -6,7 +6,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductModel } from '../../models/product-model/product-model';
 import { Router } from '@angular/router';
 import { ProductService } from '../../services/product/product.service';
-import { Inject } from '@angular/core';
 
 @Component({
 	selector: 'app-products',
