@@ -4,7 +4,7 @@ import { CommonModule, NgForOf, NgFor } from '@angular/common';
 import { CartService, CartItem } from '../../services/cart/cart.service';
 import { Router } from '@angular/router';
 
-//interface para definir o formato do pacote
+
 interface Package {
     title: string;
     smallInfo: string;
@@ -21,7 +21,7 @@ interface Package {
 })
 
 export class PricingComponent {
-    public cardsList: Package[] = [ //definindo o tipo
+    public cardsList: Package[] = [ 
         {
             title: 'Básico',
             smallInfo: 'Descubra o mundo do luxo com o nosso pacote básico, criado para oferecer uma experiência exclusiva e sofisticada sem comprometer o bolso',
@@ -87,7 +87,7 @@ export class PricingComponent {
 
     addToCart(pack: Package) {
         const cartItem: CartItem = {
-            id: this.cardsList.indexOf(pack),  //encontrar o índice do pacote na lista
+            id: this.cardsList.indexOf(pack), 
             nome: pack.title,                 
             preco: pack.packPrice,             
             quantidade: 1                   

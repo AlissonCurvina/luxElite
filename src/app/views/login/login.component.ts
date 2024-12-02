@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ClientService } from '../../services/client/client.service';
 import { Client } from '../../models/client-model/client';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,11 +20,11 @@ import { Client } from '../../models/client-model/client';
     email: string = '';
     password: string = '';
 
-    constructor(private clientService: ClientService, private router: Router) {}
-
-    
-    //redireciona para o cadastro, enviando os dados do cliente autenticado, possível alterar e deletar
-  
+    constructor(
+      private clientService: ClientService, 
+      private router: Router,
+      private authService: AuthService
+    ) {}
 
     onLogin() {
       if (!this.email || !this.password) {
@@ -39,18 +40,20 @@ import { Client } from '../../models/client-model/client';
         return;
       }
     
-      this.clientService.login(this.email, this.password).subscribe({
+      this.authService.login(this.email, this.password).subscribe({
         next: (response: Client) => {
           this.successMessage = 'Login efetuado com sucesso!';
           this.errorMessage = null;
-    
-          
+
+          this.authService.saveClientData(response);
+      
           this.router.navigate(['/create-new-user'], { state: { clientData: response } });
         },
         error: (err) => {
-          this.errorMessage = err.status === 401 ? 'Usuário e senha inválidos' : 'Erro ao tentar fazer login. Tente novamente mais tarde';
+          this.errorMessage = 
+            err.status === 401 ? 'Usuário e senha inválidos' : 'Erro ao tentar fazer login. Tente novamente mais tarde';
           this.successMessage = null;
-        }
+        },
       });
     }
     

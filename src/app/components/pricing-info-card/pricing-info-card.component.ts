@@ -15,9 +15,8 @@ export class PricingInfoCardComponent {
 	@Input() cardSmallInfo!: string;
 	@Input() packFeatures!: string[];
 	@Input() packPrice!: number;
-	@Input() onSubscribe: (pack: any) => void = () => {}; //inicializando como uma função vazia
+	@Input() onSubscribe: (pack: any) => void = () => {}; 
 
-	//método para assinar
 	subscribe() {
 		const pack = {
 			title: this.cardTitle,

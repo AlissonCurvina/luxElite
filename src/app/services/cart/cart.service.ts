@@ -18,7 +18,6 @@ export class CartService {
 
   constructor(private http: HttpClient) {}
 
-  //adiciona item ao carrinho
   addToCart(item: CartItem) {
     const existingItem = this.items.find(i => i.id === item.id);
     if (existingItem) {
@@ -28,17 +27,14 @@ export class CartService {
     }
   }
 
-  //retorna os itens do carrinho
   getItems(): CartItem[] {
     return this.items;
   }
 
-  //limpa o carrinho
   clearCart() {
     this.items = [];
   }
 
-  //finaliza a compra
   finalizePurchase(): Observable<any> {
     const cesta = {
       itens: this.items.map(item => ({
@@ -53,7 +49,6 @@ export class CartService {
     return this.http.post(`${this.apiUrl}/finalizar-compra`, cesta);
   }
 
-  //calcula o total do preço dos itens
   private getTotalPrice(): number {
     return this.items.reduce((total, item) => total + item.preco * item.quantidade, 0); 
   }

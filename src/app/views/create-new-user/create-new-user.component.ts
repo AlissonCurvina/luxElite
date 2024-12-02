@@ -13,10 +13,6 @@ import { Router } from '@angular/router';
   styleUrl: './create-new-user.component.css'
 })
 
-//sugestão: colocar mensagem "cliente cadastrado com sucesso" e validar os campos preenchidos"
-//sugestão: validar a gravação, só gravar se o cpf ainda n existir
-//gerar dados de endereço
-
 export class CreateNewUserComponent {
   message: string = '';
   obj: Client = new Client();
@@ -33,7 +29,7 @@ export class CreateNewUserComponent {
     }
   }
 
-  gravar() { //completo
+  gravar() { 
     console.log("Dados antes de enviar:", this.obj);
     this.service.gravar(this.obj).subscribe({
       next: (data) => {
@@ -47,7 +43,7 @@ export class CreateNewUserComponent {
     });
   }  
 
-  alterar() { //completo
+  alterar() { 
     if (!this.obj.cpf) {
       this.message = "Por favor, insira um CPF válido.";
       return;
@@ -72,7 +68,7 @@ export class CreateNewUserComponent {
   }
   
   
-  pesquisar() { //completo
+  pesquisar() {
     if (!this.obj.cpf) {
       this.message = "Por favor, insira um CPF válido.";
       return;
@@ -96,7 +92,7 @@ export class CreateNewUserComponent {
     });
   }
 
-  remover() { //completo
+  remover() { 
     if (!this.obj.cpf) {
       this.message = "Por favor, insira um CPF válido.";
       return;

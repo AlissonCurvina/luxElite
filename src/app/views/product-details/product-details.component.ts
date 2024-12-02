@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
 	productId: number = 0;
-	product: any; // altere para o tipo do seu produto
+	product: any; 
 
 	constructor(
 		private route: ActivatedRoute,  
@@ -28,7 +28,7 @@ export class ProductDetailsComponent implements OnInit {
 
 	ngOnInit() {
 		this.route.params.subscribe(params => {
-			this.productId = +params['id']; //o '+' converte para número
+			this.productId = +params['id']; 
 			this.loadProductDetails(this.productId);
 		});
 	}

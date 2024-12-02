@@ -1,7 +1,6 @@
 <div class="bg-black dark:bg-black border-b border-[#AD760C] w-screen flex justify-center items-center">
     <form (submit)="search()" class="max-w-[480px] w-full px-4">
       <div class="relative p-4">
-        <!-- Input de busca -->
         <input 
           [(ngModel)]="searchTerm" 
           type="text" 
@@ -10,7 +9,6 @@
           placeholder="Buscar..."
         >
         
-        <!-- Botão de busca com o ícone de lupa -->
         <button type="submit" class="absolute top-6 right-8">
           <svg 
             class="text-[#AD760C] h-5 w-5 fill-current dark:text-[#AD760C]"

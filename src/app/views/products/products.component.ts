@@ -27,7 +27,7 @@ export class ProductsComponent implements OnInit {
 	constructor(
 	  private route: ActivatedRoute,
 	  private router: Router,
-	  private productService: ProductService // Injete o serviço aqui
+	  private productService: ProductService 
 	) {
 	  this.allProducts = [];
 	}
@@ -35,8 +35,7 @@ export class ProductsComponent implements OnInit {
 	ngOnInit(): void {
 		this.productService.getAllProducts().subscribe(
 			(data: any[]) => {
-			  console.log('Dados recebidos da API:', data);
-			  // Converte cada objeto em uma instância de ProductModel
+		
 			  this.allProducts = data.map(product => new ProductModel(
 				product.id,
 				product.nome,
@@ -47,8 +46,7 @@ export class ProductsComponent implements OnInit {
 				product.listaPacotes,
 				product.marca
 			  ));
-			  this.filteredProducts = [...this.allProducts]; // Inicializa os produtos filtrados
-			  console.log('Produtos no filtro: ', this.filteredProducts)
+			  this.filteredProducts = [...this.allProducts]; 
 			},
 			(error) => {
 			  console.error('Erro ao carregar produtos:', error);
@@ -63,31 +61,31 @@ export class ProductsComponent implements OnInit {
   
 	public toggleBrand(brand: string) {
 	  if (this.selectedBrands.has(brand)) {
-		this.selectedBrands.delete(brand); // Remove a marca se já estiver selecionada
+		this.selectedBrands.delete(brand);
 	  } else {
-		this.selectedBrands.add(brand); // Adiciona a marca se não estiver selecionada
+		this.selectedBrands.add(brand);
 	  }
-	  this.filterProducts(); // Filtra produtos com base nas marcas selecionadas
+	  this.filterProducts();
 	}
   
 	public toggleCategory(category: string) {
 	  if (this.selectedCategories.has(category)) {
-		this.selectedCategories.delete(category); // Remove a categoria se já estiver selecionada
+		this.selectedCategories.delete(category); 
 	  } else {
-		this.selectedCategories.add(category); // Adiciona a categoria se não estiver selecionada
+		this.selectedCategories.add(category); 
 	  }
-	  this.filterProducts(); // Filtra produtos com base nas categorias selecionadas
+	  this.filterProducts(); 
 	}
   
 	public filterProducts(searchTerm?: string) {
 	  this.filteredProducts = this.allProducts.filter(product =>
 		(this.selectedBrands.size === 0 || this.selectedBrands.has(product.getBrand())) &&
 		(this.selectedCategories.size === 0 || this.selectedCategories.has(product.getCategory())) &&
-		(!searchTerm || product.getName().toLowerCase().includes(searchTerm.toLowerCase())) // Filtro pelo termo de busca
+		(!searchTerm || product.getName().toLowerCase().includes(searchTerm.toLowerCase())) 
 	  );
 	}
   
-	viewProductDetails(productId: number) { // Função para navegar até os detalhes do produto
+	viewProductDetails(productId: number) { 
 	  console.log('Navigating to product details for ID:', productId);
 	  this.router.navigate(['/product-details', productId]);
 	}

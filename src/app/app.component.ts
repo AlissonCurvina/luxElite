@@ -20,9 +20,8 @@ import { FooterComponent } from './components/footer/footer.component';
 })
 export class AppComponent {
 	title = 'lux-elite';
-	isOpen = false; // Initial value
+	isOpen = false; 
 
-	// Method to toggle isOpen
 	toggleMenu() {
 		this.isOpen = !this.isOpen;
 	}

@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { catchError, Observable } from 'rxjs';
 import { Client } from '../../models/client-model/client';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
 
-  constructor(private http : HttpClient) {}
+  constructor(private http : HttpClient, private authService: AuthService) {}
   private apiUrl = 'http://localhost:8081/api';
 
   gravar(obj: Client) : Observable<Object> {
@@ -27,16 +28,9 @@ export class ClientService {
     return this.http.delete(`http://localhost:8081/api/cliente/${cpf}`);
   }
 
-  login(email: string, password: string) {
-    console.log("Enviando dados para o back-end:", { email, password });
-  
-    return this.http.post<Client>(`${this.apiUrl}/cliente/login`, { email, password }).pipe(
-      catchError((err) => {
-        console.error("Erro ao fazer requisição ao back-end:", err);
-        throw err;
-      })
-    );
-  }  
+  login(email: string, password: string): Observable<Client> {
+    return this.authService.login(email, password);
+  }
   
   recoverPassword(email: string) {
     return this.http.post<string>(`${this.apiUrl}/cliente/recupera`, { email }).pipe(
@@ -46,7 +40,5 @@ export class ClientService {
       })
     );
   }
-  
-  
 }
 

@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 
 export class FilterService {
-	private allProducts: any[] = []; // Todos os produtos
+	private allProducts: any[] = []; 
 	private filteredProductsSubject = new BehaviorSubject<any[]>([]);
 	filteredProducts$ = this.filteredProductsSubject.asObservable();
 
@@ -14,7 +14,7 @@ export class FilterService {
 
 	setProducts(products: any[]) {
 		this.allProducts = products;
-		this.filteredProductsSubject.next(products); // Inicie com todos os produtos
+		this.filteredProductsSubject.next(products);
 	}
 
 	filterByText(searchTerm: string) {

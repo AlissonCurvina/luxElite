@@ -13,7 +13,6 @@ export class ProductModel {
         private brand: string
     ) {}
 
-    // Métodos getters para acessar as propriedades
     getId(): number {
         return this.id;
     }
